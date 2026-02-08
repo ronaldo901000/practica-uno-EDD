@@ -1,2 +1,3 @@
 # practica-uno-EDD
-Juego de cartas  UNO fusionado con UNO FLIP
+Juego de cartas  UNO con la extension de 
+UNO FLIP
