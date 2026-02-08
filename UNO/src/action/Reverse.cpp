@@ -1,5 +1,8 @@
 #include "../include/action/Reverse.h"
 
+Reverse::Reverse(){
+    this->nombre="REVERSE";
+}
 //metodo que se encarga de cambiar la direccion o sentido de la partida
 void Reverse::realizarAccion()
 {

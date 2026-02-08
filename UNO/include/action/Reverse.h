@@ -10,6 +10,7 @@ private:
     const int IZQUIERZA=0;
 
 public:
+    Reverse();
     void realizarAccion() override;
     void setDireccionActual(int* direccionActual);
 };

@@ -1,5 +1,9 @@
 #include "../include/action/Flip.h"
 
+Flip::Flip()
+{
+    this->nombre = "FLIP";
+}
 void Flip::realizarAccion()
 {
     if (*ladoEnJuego == LADO_CLARO)

@@ -70,4 +70,5 @@ void LinkedList ::deleteElement(int index)
     previus->setNextNode(next);
     // se destruye el nodo
     node->~Node();
+    size--;
 }
