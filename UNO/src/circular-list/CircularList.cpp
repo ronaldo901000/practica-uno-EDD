@@ -17,7 +17,7 @@ int CircularList::getSize()
 void CircularList::insertElement(Player *element)
 {
     // se crea un nuevo nodo
-    Node *newNode = new Node(element);
+    CircularNode *newNode = new CircularNode(element);
 
     // el nodo es el primero y ultimo
     if (isEmpty())
@@ -44,7 +44,7 @@ Player *CircularList::getElement(int index)
     return getNodeByIndex(index)->getElement();
 }
 
-Node *CircularList::getNodeByIndex(int index)
+CircularNode *CircularList::getNodeByIndex(int index)
 {
     if (isEmpty())
     {
@@ -54,11 +54,11 @@ Node *CircularList::getNodeByIndex(int index)
     {
         return nullptr;
     }
-    Node *current = initialNode;
+    CircularNode *current = initialNode;
 
     for (int i = 0; i < index; i++)
     {
-        Node *next = current->getNextNode();
+        CircularNode *next = current->getNextNode();
         current = next;
     }
     return current;
@@ -67,13 +67,13 @@ Node *CircularList::getNodeByIndex(int index)
 //metodo que se encarga de eliminar nodos, en base a su indice
 void CircularList ::deleteElement(int index)
 {
-    Node *node =getNodeByIndex(index);
+    CircularNode *node =getNodeByIndex(index);
 
-    Node* previus= node->getPreviousNode();
-    Node* next = node->getNextNode();
+    CircularNode* previus= node->getPreviousNode();
+    CircularNode* next = node->getNextNode();
     //los nodos anterior y siguiente del nodo a eliminar se conectan
     previus->setNextNode(next);
     next->setPreviousNode(previus);
     //se destruye el nodo
-    node->~Node();
+    node->~CircularNode();
 }

@@ -8,7 +8,8 @@ private:
     int id;
 
 public:
-    Player (std::string name, int id);
+    Player(std::string name, int id);
+    Player();
     ~Player();
     std::string getName();
     void setName(std::string name);
