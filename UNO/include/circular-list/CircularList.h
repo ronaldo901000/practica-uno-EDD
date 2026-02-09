@@ -1,12 +1,12 @@
 #ifndef CIRCULAR_LIST_H
 #define CIRCULAR_LIST_H
-#include "Node.h"
+#include "CircularNode.h"
 class CircularList
 {
 private:
     int size;
-    Node*initialNode;
-    Node*endNode;
+    CircularNode*initialNode;
+    CircularNode*endNode;
     
 
 public:
@@ -22,7 +22,7 @@ public:
     void insertElement(Player* element);
     Player* getElement(int index);
     void deleteElement(int index);
-    Node* getNodeByIndex(int index);
+    CircularNode* getNodeByIndex(int index);
     
 };
 #endif
