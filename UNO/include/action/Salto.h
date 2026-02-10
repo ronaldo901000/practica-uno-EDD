@@ -5,8 +5,10 @@
 class Salto : public Action
 {
 private:
-
+    bool esLadoClaro;
 public:
+    ~Salto();
+    Salto(bool esLadoClaro);
     void realizarAccion() override;
 };
 #endif

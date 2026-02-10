@@ -12,6 +12,7 @@ private:
 public:
     Reverse();
     void realizarAccion() override;
+    //metodo que sirve para saber cual es la direccion antes del cambio
     void setDireccionActual(int* direccionActual);
 };
 #endif

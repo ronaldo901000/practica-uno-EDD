@@ -5,7 +5,11 @@
 class Numero : public Action
 {
 private:
+    int numero;
+
 public:
+    Numero();
+    ~Numero();
     void realizarAccion() override;
 };
 #endif

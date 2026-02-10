@@ -4,7 +4,7 @@
 
 class Robo : public Action
 {
-private:
+protected:
 int cantidadRobo;
 public:
     void realizarAccion() override;
