@@ -1,6 +1,6 @@
 #ifndef NODE_H
 #define NODE_H
-#include "../include/cards/Card.h"
+#include "../include/card/Card.h"
 
 class Node
 {

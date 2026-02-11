@@ -3,7 +3,7 @@
 #include <limits>
 #include <stdlib.h>
 #include "../include/circular-list/CircularList.h"
-
+#include "../include/deck/GeneratorCards.h"
 using namespace std;
 
 Uno::~Uno() {}
@@ -22,8 +22,17 @@ void Uno::start()
     system("clear");
     cout << "¡Jugadores registrados exitosamente!" << endl;
 
-    // se crea la pila de cartas
-    
+    // se crean los mazos necesario para la partida
+    list->getSize();
+    GeneratorCards *generator = new GeneratorCards(config);
+    generator->generateCards();
+
+    Card **cards = generator->getCards();
+    for (int i = 0; i < generator->getNumberCards(); i++)
+    {
+        std::cout << (i + 1) << ". Carta: " << cards[i]->getSideLight()->getAction()->getNombre()
+                  << " Color: " << cards[i]->getSideLight()->getColor() << std::endl;
+    }
 }
 
 Configuration *Uno::createConfig()

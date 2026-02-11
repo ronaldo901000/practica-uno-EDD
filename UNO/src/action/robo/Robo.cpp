@@ -4,5 +4,5 @@ Robo :: Robo(){}
 
 Robo :: ~Robo(){}
 
-//pendiente de implementacion
+// implementacion en los hijos
 void Robo ::realizarAccion(){}

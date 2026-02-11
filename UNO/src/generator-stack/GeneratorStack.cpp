@@ -9,6 +9,7 @@ para iniciar una partida
 */
 Stack *GeneratorStack ::generate()
 {
+    return nullptr;
 }
 
 int GeneratorStack ::calculateNumberDecks()
@@ -25,4 +26,5 @@ void GeneratorStack ::shuffleCards(Stack *stack)
 //se debe crear la clase mazo
 Stack *GeneratorStack ::generateStack()
 {
+    return nullptr;
 }

@@ -2,6 +2,7 @@
 #define UNO_H
 #include "../include/configuracion-partida/Configuration.h"
 #include "../include/creator-players/CreatorPlayers.h"
+#include "../include/deck/Deck.h"
 class Uno
 {
 private:

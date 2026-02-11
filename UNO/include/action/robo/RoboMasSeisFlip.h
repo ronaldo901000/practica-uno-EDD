@@ -7,7 +7,6 @@ class RoboMasSeisFlip : public Robo
 private:
 public:
     RoboMasSeisFlip();
-    ~RoboMasSeisFlip();
     void realizarAccion() override;
 };
 

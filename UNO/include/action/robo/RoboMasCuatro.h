@@ -7,7 +7,7 @@ class RoboMasCuatro : public Robo
 private:
 public:
     RoboMasCuatro();
-    ~RoboMasCuatro();
+
     void realizarAccion() override;
 };
 #endif
