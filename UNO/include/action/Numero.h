@@ -8,7 +8,7 @@ private:
     int numero;
 
 public:
-    Numero();
+    Numero(int numero);
     ~Numero();
     void realizarAccion() override;
 };

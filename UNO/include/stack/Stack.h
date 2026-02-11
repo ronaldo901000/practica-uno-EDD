@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 #include "../include/linked-list/LinkedList.h"
-#include "../include/cards/Card.h"
+#include "../include/card/Card.h"
 class Stack
 {
 private:

@@ -1,12 +1,14 @@
 #include "../include/action/Numero.h"
 
-Numero :: Numero(){
-    this->nombre="NUMERO";
+Numero ::Numero(int numero)
+{
+    this->nombre = "NUMERO";
+    this->numero = numero;
 }
 
-Numero :: ~Numero(){}
+Numero ::~Numero() {}
 
-//pendiente de implementacion
-void Numero :: realizarAccion(){
-
+// pendiente de implementacion
+void Numero ::realizarAccion()
+{
 }

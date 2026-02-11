@@ -1,5 +1,5 @@
-#ifndef COLOR_H
-#define COLOR_H
+#ifndef COMODIN_COLOR_H
+#define COMODIN_COLOR_H
 #include "Action.h"
 
 class Color : public Action

@@ -1,7 +1,7 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 #include "../include/linked-list/Node.h"
-#include "../include/cards/Card.h"
+#include "../include/card/Card.h"
 class LinkedList
 {
 private:
