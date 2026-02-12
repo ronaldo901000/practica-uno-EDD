@@ -1,6 +1,7 @@
 #ifndef CARD_H
 #define CARD_H
 #include "../include/side/Side.h"
+#include "../include/side/SideDark.h"
 class Card
 {
 private:
@@ -13,5 +14,6 @@ public:
     ~Card();
     Side *getSideLight();
     Side *getSideDark();
+    void setSideDark(SideDark* sideDark);
 };
 #endif

@@ -29,6 +29,8 @@ void GeneratorCards ::generateCards()
     // si es flip se genera el lado oscuro
     if (config->isFlip())
     {
+        this->generatorDarkSide = new GeneratorDarkSide(this->cards, this->cantidadCartas);
+        this->generatorDarkSide->createDarkSide();
     }
 }
 
@@ -49,10 +51,7 @@ void GeneratorCards::generateLightSideCard()
 {
     generateAllCardsWithColor();
     createWildCards(true);
-    // si es una partida flip, se agregan 8 cartas mas,
-    if (config->isFlip())
-    {
-    }
+
 }
 
 // metod que genera todas las cartas numericas y cartas especiales que tiene un color especifico
@@ -113,11 +112,6 @@ void GeneratorCards::generateCardNumeric(ColorEnum color)
     SideLight *side = new SideLight(action, color);
     cards[this->ultimaPosicionOcupada] = new Card(side);
 
-    // se genera su lado oscuro si es flip
-    if (config->isFlip())
-    {
-        // pendiente de implementacion
-    }
     ultimaPosicionOcupada++;
 
     // Cartas 1 a 9 (dos de cada una)
@@ -128,10 +122,6 @@ void GeneratorCards::generateCardNumeric(ColorEnum color)
             Numero *action = generator->generateNumeric(num);
             SideLight *side = new SideLight(action, color);
             cards[ultimaPosicionOcupada] = new Card(side);
-            if (config->isFlip())
-            {
-                // pendiente de implementacion
-            }
             (ultimaPosicionOcupada)++;
         }
     }

@@ -4,9 +4,7 @@
 class GeneratorStack
 {
 private:
-    //atributos
     int numberPlayers;
-
     //metodos
     int calculateNumberDecks();
     Stack* generateStack();

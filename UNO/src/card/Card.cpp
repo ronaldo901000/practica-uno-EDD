@@ -3,7 +3,7 @@
 Card ::Card(Side *sideLight)
 {
     this->sideLight = sideLight;
-    this->sideDark=nullptr;
+    this->sideDark = nullptr;
 }
 
 Card ::Card(Side *sideLight, Side *sideDark)
@@ -19,4 +19,9 @@ Side *Card::getSideLight()
 Side *Card::getSideDark()
 {
     return this->sideDark;
+}
+
+void Card ::setSideDark(SideDark *sideDark)
+{
+    this->sideDark = sideDark;
 }

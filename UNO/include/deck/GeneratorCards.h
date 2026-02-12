@@ -16,12 +16,14 @@
 #include "GeneratorAction.h"
 #include "../include/side/SideLight.h"
 #include "../include/side/SideDark.h"
+#include "../include/deck/GeneratorDarkSide.h"
 class GeneratorCards
 {
 private:
     Card **cards;
     Configuration *config;
     GeneratorAction *generator;
+    GeneratorDarkSide* generatorDarkSide;
     int cantidadCartas;
     int ultimaPosicionOcupada;
 

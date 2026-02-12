@@ -28,10 +28,24 @@ void Uno::start()
     generator->generateCards();
 
     Card **cards = generator->getCards();
+
+    
     for (int i = 0; i < generator->getNumberCards(); i++)
     {
         std::cout << (i + 1) << ". Carta: " << cards[i]->getSideLight()->getAction()->getNombre()
                   << " Color: " << cards[i]->getSideLight()->getColor() << std::endl;
+    }
+    if (config->isFlip())
+    {
+
+        std::cout << endl;
+        std::cout << endl;
+        std::cout << endl;
+        for (int i = 0; i < generator->getNumberCards(); i++)
+        {
+            std::cout << (i + 1) << ". Carta: " << cards[i]->getSideDark()->getAction()->getNombre()
+                      << " Color: " << cards[i]->getSideDark()->getColor() << std::endl;
+        }
     }
 }
 
