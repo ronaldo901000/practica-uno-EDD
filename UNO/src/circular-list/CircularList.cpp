@@ -31,9 +31,13 @@ void CircularList::insertElement(Player *element)
     else
     {
         this->endNode->setNextNode(newNode);
-        newNode->setPreviousNode(endNode);
+
+        newNode->setPreviousNode(this->endNode);
+        newNode->setNextNode(this->initialNode);
+
+        this->initialNode->setPreviousNode(newNode);
+        
         this->endNode = newNode;
-        this->endNode->setNextNode(this->initialNode);
     }
     this->size++;
 }

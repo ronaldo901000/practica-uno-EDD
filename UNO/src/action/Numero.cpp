@@ -2,7 +2,7 @@
 
 Numero ::Numero(int numero)
 {
-    this->nombre = "NUMERO";
+    this->nombre = "NUMERICA";
     this->numero = numero;
 }
 
@@ -11,4 +11,8 @@ Numero ::~Numero() {}
 // pendiente de implementacion
 void Numero ::realizarAccion()
 {
+}
+
+int Numero::getNumero(){
+    return this->numero;
 }

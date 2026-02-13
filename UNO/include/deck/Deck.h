@@ -22,9 +22,10 @@ private:
     Card **cards;
 
 public:
-    Deck(Card **cards);
+    Deck(Card **cards, int numberCards);
     ~Deck();
     Card **getCards();
+    Card* getCardIndex(int index);
 };
 
 #endif

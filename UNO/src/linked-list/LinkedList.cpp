@@ -1,6 +1,11 @@
 #include "../include/linked-list/LinkedList.h"
 
-LinkedList::LinkedList() {}
+LinkedList::LinkedList() 
+{
+    this->initialNode = nullptr;
+    this->endNode = nullptr;
+    this->size = 0;
+}
 LinkedList::~LinkedList() {}
 
 bool LinkedList::isEmpty()

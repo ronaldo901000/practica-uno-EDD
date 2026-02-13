@@ -1,4 +1,5 @@
 #include "../include/action/Action.h"
+class Player;
 
 void Action::setPlayer(Player *player)
 {

@@ -11,5 +11,6 @@ public:
     Numero(int numero);
     ~Numero();
     void realizarAccion() override;
+    int getNumero();
 };
 #endif

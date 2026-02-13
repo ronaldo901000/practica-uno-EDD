@@ -20,7 +20,6 @@
 class GeneratorCards
 {
 private:
-    Card **cards;
     Configuration *config;
     GeneratorAction *generator;
     GeneratorDarkSide* generatorDarkSide;
@@ -39,20 +38,19 @@ private:
     const int CANT_MISMA_CARTA_ESPECIAL_POR_COLOR = 2;
 
     void calculateNumberCards();
-    void generateLightSideCard();
-    void generateCardNumeric(ColorEnum color);
+    void generateLightSideCard(Card** cards);
+    void generateCardNumeric(ColorEnum color , Card** cards);
 
-    void generateAllCardsWithColor();
+    void generateAllCardsWithColor( Card** cards);
 
-    void generateSpecialCards(ColorEnum color, bool esClaro);
-    void createWildCards(bool esClaro);
-    void generateFlipCards(ColorEnum color);
+    void generateSpecialCards(ColorEnum color, bool esClaro , Card** cards);
+    void createWildCards(bool esClaro , Card** cards);
+    void generateFlipCards(ColorEnum color,Card** cards);
 
 public:
     GeneratorCards(Configuration* config);
     ~GeneratorCards();
-    void generateCards();
-    Card **getCards();
+    Card** generateCards();
     int getNumberCards();
 };
 #endif

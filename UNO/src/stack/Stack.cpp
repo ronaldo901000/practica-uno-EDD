@@ -9,7 +9,9 @@ Stack::Stack()
 
 Stack::~Stack() {}
 
-//metodo que apila las cartas
+/*
+    metodo que apila las cartas 
+*/
 void Stack ::push(Card *card)
 {
     indexTop++;
@@ -37,4 +39,8 @@ bool Stack::isEmpty()
 int Stack::getTop()
 {
     return this->indexTop;
+}
+
+Card* Stack:: getTopElement(){
+    return this->container->getElement(indexTop);
 }

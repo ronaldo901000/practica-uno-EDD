@@ -10,7 +10,8 @@ Uno::~Uno() {}
 void Uno::start()
 {
     // muestra el logo de UNO
-    getLogo();
+    Menu menu = Menu();
+    menu.getLogoUno();
 
     // se crea la configuracion de juego
     Configuration *config = createConfig();
@@ -23,30 +24,12 @@ void Uno::start()
     cout << "¡Jugadores registrados exitosamente!" << endl;
 
     // se crean los mazos necesario para la partida
-    list->getSize();
-    GeneratorCards *generator = new GeneratorCards(config);
-    generator->generateCards();
+    GeneratorStack *generator = new GeneratorStack(config, list->getSize());
+    Stack *stack = generator->generate();
 
-    Card **cards = generator->getCards();
-
-    
-    for (int i = 0; i < generator->getNumberCards(); i++)
-    {
-        std::cout << (i + 1) << ". Carta: " << cards[i]->getSideLight()->getAction()->getNombre()
-                  << " Color: " << cards[i]->getSideLight()->getColor() << std::endl;
-    }
-    if (config->isFlip())
-    {
-
-        std::cout << endl;
-        std::cout << endl;
-        std::cout << endl;
-        for (int i = 0; i < generator->getNumberCards(); i++)
-        {
-            std::cout << (i + 1) << ". Carta: " << cards[i]->getSideDark()->getAction()->getNombre()
-                      << " Color: " << cards[i]->getSideDark()->getColor() << std::endl;
-        }
-    }
+    // inicia la partida
+    Partida *partida = new Partida(list, stack, config);
+    partida->start();
 }
 
 Configuration *Uno::createConfig()
@@ -144,37 +127,4 @@ void Uno::getNumerPlayers(int *numberPlayers)
             cout << "El Minimo permitido son 2 jugadores, vuelve a intentarlo: " << endl;
         }
     } while (*numberPlayers < MIN_PLAYERS);
-}
-
-void Uno::getLogo()
-{
-    // fondo negro + letras rojas + brillo
-    cout << "\033[1;40;31m";
-
-    cout << endl;
-    cout << "|--------------------------|" << endl;
-    cout << "|        BIENVENIDO        |" << endl;
-    cout << "|--------------------------|" << endl;
-    cout << endl;
-    cout << "|--------------------------|" << endl;
-    cout << "|                          |" << endl;
-    cout << "|                          |" << endl;
-    cout << "|                          |" << endl;
-    cout << "|    U   U  N   N   OOO    |" << endl;
-    cout << "|    U   U  NN  N  O   O   |" << endl;
-    cout << "|    U   U  N N N  O   O   |" << endl;
-    cout << "|    U   U  N  NN  O   O   |" << endl;
-    cout << "|     UUU   N   N   OOO    |" << endl;
-    cout << "|                          |" << endl;
-    cout << "|                          |" << endl;
-    cout << "|                          |" << endl;
-    cout << "|--------------------------|" << endl;
-
-    // reset colores ANTES del texto normal
-    cout << "\033[0m";
-
-    cout << "A continuacion la configuracion de la partida" << endl;
-    cout << "Presiona ENTER para continuar...";
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }

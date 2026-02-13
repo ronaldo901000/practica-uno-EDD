@@ -13,7 +13,7 @@ public:
     ~Stack();
     void push(Card *card);
     Card *pop();
-
+    Card* getTopElement();
     bool isEmpty();
     int getTop();
 };
