@@ -11,7 +11,7 @@ public:
     PlayerView(Player* player);
     ~PlayerView();
     void viewCards(bool isFlip);
-    int actionsMenu();
+    int actionsMenu(bool hasValidCards);
     int selectCard();
     bool askContinueDraw();
 };

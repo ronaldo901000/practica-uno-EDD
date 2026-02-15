@@ -92,35 +92,47 @@ void PlayerView::viewCards(bool isLightSide)
     cout << "\033[0m";
 }
 
-int PlayerView::actionsMenu()
+int PlayerView::actionsMenu(bool hasValidCards)
 {
     int opcion;
 
-    while (true)
+    if (hasValidCards)
     {
-        cout << "ACCIONES" << endl;
-        cout << "1. Poner Carta" << endl;
-        cout << "2. Robar carta" << endl;
-        cout << "Seleccione una opcion: ";
-
-        if (!(cin >> opcion))
+        while (true)
         {
-            // Si escriben letras o símbolos
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Entrada invalida, Solo numeros.\n\n";
-            continue;
-        }
+            cout << "ACCIONES" << endl;
+            cout << "1. Poner Carta" << endl;
+            cout << "2. Robar carta" << endl;
+            cout << "Seleccione una opcion: ";
 
-        if (opcion < 1 || opcion > 2)
-        {
-            cout << "Opcion fuera de rango. Intente de nuevo.\n\n";
-            continue;
-        }
+            if (!(cin >> opcion))
+            {
+                // Si escriben algo diferente de numeros
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Entrada invalida, Solo numeros.\n\n";
+                continue;
+            }
 
-        break;
+            if (opcion < 1 || opcion > 2)
+            {
+                cout << "Opcion fuera de rango. Intente de nuevo.\n\n";
+                continue;
+            }
+
+            break;
+        }
     }
+    else
+    {
 
+        cout << "No tienes cartas Jugables, debes robar 1 carta";
+        cout << "Presiona enter para Robar" << endl;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.get();
+        // se agrega automaticamete el numero 2 que significa el robo de una carta de la pila
+        opcion = 2;
+    }
     return opcion;
 }
 
@@ -136,20 +148,20 @@ int PlayerView::selectCard()
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Entrada invalida. Solo numeros.\n";
+            cout << "Entrada invalida. Solo numeros" << endl;
             continue;
         }
 
         if (opcion < 1 || opcion > cantidadCartas)
         {
-            cout << "Numero fuera de rango.\n";
+            cout << "Numero fuera de rango" << endl;
             continue;
         }
 
         break;
     }
 
-    return opcion;
+    return opcion - 1;
 }
 
 #include <limits>
@@ -183,6 +195,6 @@ bool PlayerView::askContinueDraw()
             return false;
         }
 
-        cout << "Opcion fuera de rango, intenta de nuevo"<<endl;
+        cout << "Opcion fuera de rango, intenta de nuevo" << endl;
     }
 }

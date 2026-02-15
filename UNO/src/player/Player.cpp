@@ -3,6 +3,8 @@
 #include "../include/card/Card.h"
 #include "../include/player/PlayerView.h"
 #include "../include/stack/Stack.h"
+#include "../include/partida/CardComparator.h"
+
 Player::Player(std::string name, int id)
 {
     this->name = name;
@@ -21,11 +23,19 @@ Player::~Player() {}
 void Player ::playCard(bool isLightSide, Stack *stack, Stack *discards, bool isRobberyMode)
 {
     view->viewCards(isLightSide);
-    int action = view->actionsMenu();
+    this->comparator = new CardComparator();
+
+    bool hasValidCards = comparator->alertCards(cardsList, stack->getTopElement(), isLightSide);
+
+    int action = view->actionsMenu(hasValidCards);
+
     if (action == PLAY_CARD)
     {
-        int selectedCard = view->selectCard();
-        Card *card = cardsList->getElement(selectedCard);
+        int selectedCardIndex = view->selectCard();
+
+        Card *card = cardsList->getElement(selectedCardIndex);
+
+        cardsList->deleteElement(selectedCardIndex);
         discards->push(card);
     }
     else
@@ -35,7 +45,7 @@ void Player ::playCard(bool isLightSide, Stack *stack, Stack *discards, bool isR
         {
             Card *card = stack->pop();
             cardsList->insertElement(card);
-            //si esta en modo robo solo deja de robar si puede jugar
+            // si esta en modo robo solo deja de robar si puede jugar
 
         } while (isRobberyMode && continueDrawing);
     }

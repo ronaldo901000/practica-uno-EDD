@@ -6,6 +6,7 @@
 #include <iostream>
 #include <iomanip>
 #include "../include/action/Numero.h"
+#include "../include/partida/CardComparator.h"
 
 using namespace std;
 CardsManager::CardsManager() {}

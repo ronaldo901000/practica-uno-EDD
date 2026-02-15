@@ -5,12 +5,14 @@ class LinkedList;
 class Card;
 class PlayerView;
 class Stack;
+class CardComparator;
 
 class Player
 {
 private:
     std::string name;
     int id;
+    CardComparator* comparator;
     LinkedList* cardsList;
     PlayerView* view;
     const int PLAY_CARD=1;

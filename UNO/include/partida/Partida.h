@@ -19,8 +19,9 @@ private:
     bool hasWinner;
     int numberPlayers;
 
-    const int LIGHT_SIDE=1;
     const int DARK_SIDE=0;
+    const int LIGHT_SIDE=1;
+    
     const int RIGHT=0;
     const int LEFT=1;
 
