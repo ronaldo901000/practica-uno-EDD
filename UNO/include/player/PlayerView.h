@@ -14,6 +14,7 @@ public:
     int actionsMenu(bool hasValidCards);
     int selectCard();
     bool askContinueDraw();
+    void alert();
 };
 
 #endif

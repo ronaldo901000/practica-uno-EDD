@@ -6,6 +6,7 @@ class Card;
 class PlayerView;
 class Stack;
 class CardComparator;
+class CardsManager;
 
 class Player
 {
@@ -17,6 +18,9 @@ private:
     PlayerView* view;
     const int PLAY_CARD=1;
     const int DRAW_CARD=2;
+    //contador de robos sucesivos
+    int numberDraw;
+    
 
 public:
     Player(std::string name, int id);
@@ -28,8 +32,10 @@ public:
     void setId(int id);
     LinkedList* getCardsList();
 
-    void playCard(bool isLightSide, Stack* stack, Stack* discards, bool isRobberyMode);
+    void playCard(bool isLightSide, Stack* stack, Stack* discards, bool isRobberyMode, CardsManager* manager);
     void addCard(Card *card);
     void sortCards();
+    bool isWinner();
+    void playValidCard(bool isLightSide, Stack *discards);
 };
 #endif

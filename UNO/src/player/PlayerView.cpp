@@ -198,3 +198,8 @@ bool PlayerView::askContinueDraw()
         cout << "Opcion fuera de rango, intenta de nuevo" << endl;
     }
 }
+
+void PlayerView::alert()
+{
+    std::cout << "\033[1;31m"<< "La carta que elegiste no es valida, vuelve a intentarlo" <<"\033[0m"<< endl;
+}

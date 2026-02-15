@@ -41,12 +41,14 @@ void Partida::startRounds(CardsManager *manager)
     {
         for (int i = 0; i < numberPlayers; i++)
         {
-            // se muestra la carta actual en juego
-            manager->viewCurrentCard(this->discards->getTopElement(), sidePlay);
-
-            // el jugador en turno juega
+            // el jugador en turno juega sus cartas
             Player *player = playerList->getElement(i);
-            player->playCard(this->sidePlay, stack, discards, config->isRObberyMode());
+            player->playCard(this->sidePlay, stack, discards, config->isRObberyMode(), manager);
+
+            if (player->isWinner())
+            {
+                hasWinner = true;
+            }
         }
     }
 }

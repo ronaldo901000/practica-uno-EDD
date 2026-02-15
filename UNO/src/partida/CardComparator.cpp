@@ -24,7 +24,6 @@ bool CardComparator::alertCards(LinkedList *cardsList, Card *currentCard, bool i
     return canPlayCard(side, cardsList, isLightSide);
 }
 
-
 bool CardComparator::canPlayCard(Side *sideCurrent, LinkedList *cardsList, bool isLightSide)
 {
     for (int i = 0; i < cardsList->getSize(); i++)
@@ -69,5 +68,50 @@ bool CardComparator::canPlayCard(Side *sideCurrent, LinkedList *cardsList, bool 
         }
     }
 
+    return false;
+}
+
+bool CardComparator::isValidCard(Card *playerCard, Card *currentCard, bool isLightSide)
+{
+    Side *currentSide;
+    Side *playerSide;
+    if (isLightSide)
+    {
+        currentSide = currentCard->getSideLight();
+        playerSide = playerCard->getSideLight();
+    }
+    else
+    {
+        currentSide = currentCard->getSideDark();
+        playerSide = playerCard->getSideDark();
+    }
+
+    // comparaciones
+    if (currentSide->getColor() == playerSide->getColor())
+    {
+        return true;
+    }
+    // Coincide accion
+    if (currentSide->getAction()->getNombre() ==
+        playerSide->getAction()->getNombre())
+    {
+        Numero *numberCurrent = dynamic_cast<Numero *>(currentSide->getAction());
+        Numero *numberPlayer = dynamic_cast<Numero *>(playerSide->getAction());
+
+        // Si ambas son cartas numericas y con el mismo valor
+        if (numberCurrent != nullptr && numberPlayer != nullptr)
+        {
+            if (numberCurrent->getNumero() == numberPlayer->getNumero())
+            {
+                return true;
+            }
+            //si son cartas numericas con diferente valor 
+            else{
+                return false;
+            }
+        }
+
+        return true;
+    }
     return false;
 }

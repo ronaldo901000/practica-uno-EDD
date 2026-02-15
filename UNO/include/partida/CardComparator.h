@@ -14,5 +14,6 @@ public:
     CardComparator();
     ~CardComparator();
     bool alertCards(LinkedList *cardsList, Card *currentCard, bool isLightSide);
+    bool isValidCard(Card* playerCard, Card* currentCard, bool isLightSide);
 };
 #endif
