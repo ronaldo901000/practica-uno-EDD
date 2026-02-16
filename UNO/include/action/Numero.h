@@ -6,7 +6,7 @@ class Numero : public Action
 {
 private:
     int numero;
-
+    
 public:
     Numero(int numero);
     ~Numero();

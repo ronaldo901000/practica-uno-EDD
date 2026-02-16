@@ -1,5 +1,5 @@
 #include "../include/circular-list/CircularList.h"
-
+#include <iostream>
 CircularList::CircularList() {}
 CircularList::~CircularList() {}
 
@@ -36,7 +36,7 @@ void CircularList::insertElement(Player *element)
         newNode->setNextNode(this->initialNode);
 
         this->initialNode->setPreviousNode(newNode);
-        
+
         this->endNode = newNode;
     }
     this->size++;
@@ -56,6 +56,7 @@ CircularNode *CircularList::getNodeByIndex(int index)
     }
     if (index < 0 || index >= size)
     {
+        std::cout << "Indice: "<<index<<" fuera de rango." << std::endl;
         return nullptr;
     }
     CircularNode *current = initialNode;
@@ -68,16 +69,16 @@ CircularNode *CircularList::getNodeByIndex(int index)
     return current;
 }
 
-//metodo que se encarga de eliminar nodos, en base a su indice
+// metodo que se encarga de eliminar nodos, en base a su indice
 void CircularList ::deleteElement(int index)
 {
-    CircularNode *node =getNodeByIndex(index);
+    CircularNode *node = getNodeByIndex(index);
 
-    CircularNode* previus= node->getPreviousNode();
-    CircularNode* next = node->getNextNode();
-    //los nodos anterior y siguiente del nodo a eliminar se conectan
+    CircularNode *previus = node->getPreviousNode();
+    CircularNode *next = node->getNextNode();
+    // los nodos anterior y siguiente del nodo a eliminar se conectan
     previus->setNextNode(next);
     next->setPreviousNode(previus);
-    //se destruye el nodo
+    // se destruye el nodo
     node->~CircularNode();
 }

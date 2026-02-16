@@ -7,6 +7,7 @@
 #include <iomanip>
 #include "../include/action/Numero.h"
 #include "../include/partida/CardComparator.h"
+#include "../include/action/Color.h"
 
 using namespace std;
 CardsManager::CardsManager() {}
@@ -38,20 +39,32 @@ void CardsManager::viewCurrentCard(Card *card, bool isLightSide)
 {
     string printColor;
     string RESET = "\033[0m";
+    Side* side;
     if (isLightSide)
     {
         printColor = "\033[30;47m";
+        side=card->getSideLight();
     }
     else
     {
         printColor = "\033[37;40m";
+        side=card->getSideDark();
     }
 
-    string accion = card->getSideLight()->getAction()->getNombre();
-    string color = card->getSideLight()->getColor();
+    string accion = side->getAction()->getNombre();
+    string color="";
     string valorNumerico = "";
 
-    Numero *numero = dynamic_cast<Numero *>(card->getSideLight()->getAction());
+    //se define que color se muestra en un multicolor
+    Color* actionColor =dynamic_cast<Color*>(side->getAction());
+    if(actionColor != nullptr){
+        color=side->getTemporalColor();
+    }
+    else{
+        color=side->getColor();
+    }
+
+    Numero *numero = dynamic_cast<Numero *>(side->getAction());
     if (numero != nullptr)
     {
         valorNumerico = std::to_string(numero->getNumero());

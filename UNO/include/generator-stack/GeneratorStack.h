@@ -16,6 +16,10 @@ private:
     Card **allCards;
     int totalNumberCards;
     int numberCardsDeck;
+    int* playDirection;
+    int* turnCount;
+    bool* isLightSide;
+
     // metodos
     int calculateNumberDecks();
     void generateDecks();
@@ -25,7 +29,7 @@ private:
 
 public:
     // constructor y destructor
-    GeneratorStack(Configuration *config, int numberPlayers);
+    GeneratorStack(Configuration *config, int numberPlayers, int* playDirection, int* turnCount, bool* isLightSide);
 
     ~GeneratorStack();
 

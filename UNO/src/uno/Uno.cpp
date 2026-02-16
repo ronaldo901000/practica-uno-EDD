@@ -24,12 +24,22 @@ void Uno::start()
     cout << "¡Jugadores registrados exitosamente!" << endl;
 
     // se crean los mazos necesario para la partida
-    GeneratorStack *generator = new GeneratorStack(config, list->getSize());
+    int *playDirection = new int[1];
+    int *turnCount = new int[0];
+    bool* sidePlay = new bool(true);
+    GeneratorStack *generator = new GeneratorStack(config, list->getSize(), playDirection, turnCount, sidePlay);
     Stack *stack = generator->generate();
 
     // inicia la partida
-    Partida *partida = new Partida(list, stack, config);
+    Partida *partida = new Partida(list, stack, config, playDirection, turnCount, sidePlay);
     partida->start();
+
+    delete[] playDirection;
+    delete[] turnCount;
+    delete generator;
+    delete creator;
+    delete config;
+    delete sidePlay;
 }
 
 Configuration *Uno::createConfig()

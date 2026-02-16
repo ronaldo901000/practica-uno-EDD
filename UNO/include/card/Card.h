@@ -15,5 +15,7 @@ public:
     Side *getSideLight();
     Side *getSideDark();
     void setSideDark(SideDark* sideDark);
+    void applyEffect(bool isLightSide);
+
 };
 #endif

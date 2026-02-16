@@ -10,20 +10,21 @@ class Partida
 {
 private:
     CircularList *playerList;
-    int direction;
-    int sidePlay;
+    int *direction;
+    bool *sidePlay;
     Stack *stack;
     Stack *discards;
     Configuration *config;
     Player playerTurn;
     bool hasWinner;
     int numberPlayers;
+    int *turnCount;
 
-    const int DARK_SIDE=0;
-    const int LIGHT_SIDE=1;
-    
-    const int RIGHT=0;
-    const int LEFT=1;
+    const int DARK_SIDE = 0;
+    const int LIGHT_SIDE = 1;
+
+    const int RIGHT = 0;
+    const int LEFT = 1;
 
     void startRounds(CardsManager *manager);
 
@@ -31,19 +32,20 @@ public:
     Partida(
         CircularList *playerList,
         Stack *stack,
-        Configuration *config);
+        Configuration *config,
+        int *playDirection,
+        int *turnCount,
+        bool *sidePlay);
 
     ~Partida();
 
     void start();
 
+    int *getDireccion();
 
+    void setDireccion(int *direccion);
 
-    int getDireccion();
-
-    void setDireccion(int direccion);
-
-    int getSidePlay();
+    bool getSidePlay();
 };
 
 #endif

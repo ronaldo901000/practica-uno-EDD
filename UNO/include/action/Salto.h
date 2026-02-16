@@ -6,9 +6,13 @@ class Salto : public Action
 {
 private:
     bool esLadoClaro;
+    int* turnoActual;
+    int* direccionJuego;
+    const int DERECHA=0;
+    const int IZQUIERDA=1;
 public:
     ~Salto();
-    Salto(bool esLadoClaro);
+    Salto(bool esLadoClaro, int* turnoActual, int* direccionJuego);
     void realizarAccion() override;
 };
 #endif

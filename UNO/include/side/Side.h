@@ -9,11 +9,14 @@ protected:
     Action *action;
     ColorEnum color;
     std::string name;
+    std ::string temporalColor;
 
 public:
     Side(Action *action, ColorEnum color);
     virtual ~Side();
     Action *getAction();
     std::string getColor();
+    std::string getTemporalColor();
+    void setTemporalColor(std::string color);
 };
 #endif

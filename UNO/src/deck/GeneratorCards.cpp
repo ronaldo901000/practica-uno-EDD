@@ -2,12 +2,15 @@
 #include "string"
 #include <iostream>
 
-GeneratorCards ::GeneratorCards(Configuration *config)
+GeneratorCards ::GeneratorCards(Configuration *config,int* playDirection, int* turnCout, bool* esLadoClaro)
 {
     this->config = config;
     this->ultimaPosicionOcupada = 0;
     this->cantidadCartas = 0;
     this->generator = new GeneratorAction();
+    this->playDirection=playDirection;
+    this->turnCout=turnCout;
+    this->esLadoClaro=esLadoClaro;
 }
 
 GeneratorCards::~GeneratorCards() {}
@@ -23,7 +26,7 @@ Card** GeneratorCards ::generateCards()
     // si es flip se genera el lado oscuro
     if (config->isFlip())
     {
-        this->generatorDarkSide = new GeneratorDarkSide(cards, this->cantidadCartas);
+        this->generatorDarkSide = new GeneratorDarkSide(cards, this->cantidadCartas, this->playDirection, turnCout, this->esLadoClaro);
         this->generatorDarkSide->createDarkSide();
     }
     return cards;
@@ -128,14 +131,14 @@ void GeneratorCards ::generateSpecialCards(ColorEnum color, bool esClaro, Card**
         {
             if (i == 0)
             {
-                Salto *action = new Salto(esClaro);
+                Salto *action = new Salto(esClaro, turnCout, playDirection);
                 SideLight *side = new SideLight(action, color);
                 cards[ultimaPosicionOcupada] = new Card(side);
                 (ultimaPosicionOcupada)++;
             }
             else if (i == 1)
             {
-                Reverse *action = new Reverse();
+                Reverse *action = new Reverse(this->playDirection);
                 SideLight *side = new SideLight(action, color);
                 cards[ultimaPosicionOcupada] = new Card(side);
                 (ultimaPosicionOcupada)++;
@@ -171,6 +174,7 @@ void GeneratorCards::createWildCards(bool isLight, Card** cards)
                 Color *action = new Color(isLight);
                 SideLight *side = new SideLight(action, ColorEnum::Multicolor);
                 cards[ultimaPosicionOcupada] = new Card(side);
+                action->setSide(side);
             }
             else if (i == 1)
             {
@@ -195,7 +199,7 @@ void GeneratorCards ::generateFlipCards(ColorEnum color, Card** cards)
 {
     for (int i = 0; i < CANT_MISMA_CARTA_ESPECIAL_POR_COLOR; i++)
     {
-        Flip *action = new Flip();
+        Flip *action = new Flip(this->esLadoClaro);
         SideLight *side = new SideLight(action, color);
         cards[ultimaPosicionOcupada] = new Card(side);
         ultimaPosicionOcupada++;

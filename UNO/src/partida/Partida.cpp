@@ -3,7 +3,10 @@
 Partida::Partida(
     CircularList *playerList,
     Stack *stack,
-    Configuration *config)
+    Configuration *config,
+    int *playDirection,
+    int *turnCount,
+     bool *sidePlay)
 {
     this->playerList = playerList;
     this->numberPlayers = playerList->getSize();
@@ -12,10 +15,12 @@ Partida::Partida(
     this->config = config;
     // 1 representa direccion en contra de las manecillas del reloj o derecha
     // 0 representa direccion a favor de las manecillas del reloj o izquierda
-    this->direction = RIGHT;
+    this->direction = playDirection;
     // 1 representa lado claro (normal)
     // 0 representa lado oscuro|
-    this->sidePlay = LIGHT_SIDE;
+    this->sidePlay = sidePlay;
+
+    this->turnCount = turnCount;
 }
 
 void Partida::start()
@@ -39,31 +44,44 @@ void Partida::startRounds(CardsManager *manager)
     manager->drawInitialCard(this->stack, this->discards);
     while (!hasWinner)
     {
-        for (int i = 0; i < numberPlayers; i++)
-        {
-            // el jugador en turno juega sus cartas
-            Player *player = playerList->getElement(i);
-            player->playCard(this->sidePlay, stack, discards, config->isRObberyMode(), manager);
+        // el jugador en turno juega sus cartas
+        Player *player = playerList->getElement(*turnCount);
+        player->playCard(*this->sidePlay, stack, discards, config->isRObberyMode(), manager);
 
-            if (player->isWinner())
+        if (player->isWinner())
+        {
+            hasWinner = true;
+        }
+        if (*direction == RIGHT)
+        {
+            (*turnCount)++;
+            if (*turnCount == playerList->getSize())
             {
-                hasWinner = true;
+                *turnCount = 0;
+            }
+        }
+        else
+        {
+            (*turnCount)--;
+            if (*turnCount == -1)
+            {
+                *turnCount = playerList->getSize() - 1;
             }
         }
     }
 }
 
-int Partida::getDireccion()
+int *Partida::getDireccion()
 {
     return this->direction;
 }
 
-void Partida::setDireccion(int direccion)
+void Partida::setDireccion(int *direccion)
 {
     this->direction = direccion;
 }
 
-int Partida::getSidePlay()
+bool Partida::getSidePlay()
 {
-    return this->direction;
+    return this->sidePlay;
 }

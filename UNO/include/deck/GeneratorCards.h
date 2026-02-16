@@ -25,6 +25,9 @@ private:
     GeneratorDarkSide* generatorDarkSide;
     int cantidadCartas;
     int ultimaPosicionOcupada;
+    int* playDirection;
+    int* turnCout;
+    bool* esLadoClaro;
 
     const int CANTIDAD_FLIP = 116;
     const int CANTIDAD_NORMAL = 108;
@@ -48,7 +51,7 @@ private:
     void generateFlipCards(ColorEnum color,Card** cards);
 
 public:
-    GeneratorCards(Configuration* config);
+    GeneratorCards(Configuration* config,int* playDirection, int* turnCout, bool* esLadoClaro);
     ~GeneratorCards();
     Card** generateCards();
     int getNumberCards();

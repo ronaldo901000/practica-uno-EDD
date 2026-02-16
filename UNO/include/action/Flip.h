@@ -5,13 +5,12 @@
 class Flip : public Action
 {
 private:
-    int *ladoEnJuego;
+    bool *esLadoClaro;
     const int LADO_CLARO = 1;
     const int LADO_OSCURO = 0;
 
 public:
-    Flip();
+    Flip(bool *esLadoClaro);
     void realizarAccion() override;
-    void setLadoEnJuego(int *ladoEnJuego);
 };
 #endif

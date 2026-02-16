@@ -1,9 +1,17 @@
 #include "../include/deck/GeneratorDarkSide.h"
 
-GeneratorDarkSide::GeneratorDarkSide(Card **cards, int numberCards)
+GeneratorDarkSide::GeneratorDarkSide(
+    Card **cards, 
+    int numberCards, 
+    int* playDirection, 
+    int* turnCount,
+    bool* isLightSide)
 {
     this->cards = cards;
     this->numberCards = numberCards;
+    this->playDirection=playDirection;
+    this->turnCount=turnCount;
+    this->isLightSide=isLightSide;
 }
 
 GeneratorDarkSide::~GeneratorDarkSide()
@@ -70,7 +78,7 @@ void GeneratorDarkSide::generateCardNumeric(ColorEnum color)
             Numero *action = generateNumeric(num);
             SideDark *side = new SideDark(action, color);
             int randomIndex = generateIndexRandom(this->numberCards);
-             cards[randomIndex]->setSideDark(side);
+            cards[randomIndex]->setSideDark(side);
         }
     }
 }
@@ -80,9 +88,9 @@ void GeneratorDarkSide ::generateFlipCards(ColorEnum color)
     for (int i = 0; i < CANT_MISMA_CARTA_ESPECIAL_POR_COLOR; i++)
     {
         int randomIndex = generateIndexRandom(this->numberCards);
-        Flip *action = new Flip();
+        Flip *action = new Flip(isLightSide);
         SideDark *side = new SideDark(action, color);
-         cards[randomIndex]->setSideDark(side);
+        cards[randomIndex]->setSideDark(side);
     }
 }
 void GeneratorDarkSide ::generateSpecialCards(ColorEnum color, bool esClaro)
@@ -94,21 +102,21 @@ void GeneratorDarkSide ::generateSpecialCards(ColorEnum color, bool esClaro)
             int randomIndex = generateIndexRandom(this->numberCards);
             if (i == 0)
             {
-                Salto *action = new Salto(esClaro);
+                Salto *action = new Salto(esClaro, turnCount, playDirection);
                 SideDark *side = new SideDark(action, color);
-                 cards[randomIndex]->setSideDark(side);
+                cards[randomIndex]->setSideDark(side);
             }
             else if (i == 1)
             {
-                Reverse *action = new Reverse();
+                Reverse *action = new Reverse(playDirection);
                 SideDark *side = new SideDark(action, color);
-                 cards[randomIndex]->setSideDark(side);
+                cards[randomIndex]->setSideDark(side);
             }
             else if (i == 2)
             {
                 RoboMasTresFlip *action = new RoboMasTresFlip();
                 SideDark *side = new SideDark(action, color);
-                 cards[randomIndex]->setSideDark(side);
+                cards[randomIndex]->setSideDark(side);
             }
         }
     }
@@ -125,14 +133,15 @@ void GeneratorDarkSide::createWildCards()
             {
                 Color *action = new Color(false);
                 SideDark *side = new SideDark(action, ColorEnum::Multicolor);
-                 cards[randomIndex]->setSideDark(side);
+                cards[randomIndex]->setSideDark(side);
+                action->setSide(side);
             }
             else if (i == 1)
             {
 
                 RoboMasSeisFlip *action = new RoboMasSeisFlip();
                 SideDark *side = new SideDark(action, ColorEnum::Multicolor);
-                 cards[randomIndex]->setSideDark(side);
+                cards[randomIndex]->setSideDark(side);
             }
         }
 }
@@ -151,7 +160,7 @@ int GeneratorDarkSide::generateIndexRandom(int maxIndex)
     {
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(0, maxIndex-1);
+        std::uniform_int_distribution<> dis(0, maxIndex - 1);
         index = dis(gen);
         if (cards[index]->getSideDark() == nullptr)
         {

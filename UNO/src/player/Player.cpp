@@ -95,6 +95,9 @@ void Player::playValidCard(bool isLightSide, Stack *discards)
 
     cardsList->deleteElement(selectedCardIndex);
     discards->push(card);
+
+    // se aplica el efecto que tiene la carta
+    card->applyEffect(isLightSide);
 }
 
 // metodo que se encarga de agregar una carta a la mano del jugador

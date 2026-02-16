@@ -22,6 +22,10 @@ class GeneratorDarkSide
 private:
     Card **cards;
     int numberCards;
+    int* playDirection;
+    int* turnCount;
+     bool* isLightSide;
+
     const int ROSA = 0;
     const int TURQUEZA = 1;
     const int NARANJA = 2;
@@ -40,7 +44,7 @@ private:
     void generateSpecialCards(ColorEnum color, bool esClaro);
 
 public:
-    GeneratorDarkSide(Card **cards, int numberCards);
+    GeneratorDarkSide(Card **cards, int numberCards, int* playDirection, int* turnCount,  bool *isLightSide);
     ~GeneratorDarkSide();
     Card **getCards();
     void createDarkSide();

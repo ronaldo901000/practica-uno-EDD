@@ -11,7 +11,14 @@ Action *Side::getAction()
 {
     return this->action;
 }
-
+std::string Side::getTemporalColor()
+{
+    return this->temporalColor;
+}
+void Side::setTemporalColor(std::string color)
+{
+    this->temporalColor = color;
+}
 std::string Side::getColor()
 {
     if (this->color == ColorEnum::Rojo)
@@ -56,5 +63,4 @@ std::string Side::getColor()
     }
 
     return "Desconocido";
-    
 }

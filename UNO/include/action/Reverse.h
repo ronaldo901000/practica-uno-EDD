@@ -6,13 +6,12 @@ class Reverse : public Action
 {
 private:
     int* direccionActual;
-    const int DERECHA=1;
-    const int IZQUIERZA=0;
+    const int DERECHA=0;
+    const int IZQUIERZA=1;
 
 public:
-    Reverse();
+    Reverse(int* direccionActual);
     void realizarAccion() override;
     //metodo que sirve para saber cual es la direccion antes del cambio
-    void setDireccionActual(int* direccionActual);
 };
 #endif

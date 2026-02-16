@@ -1,9 +1,12 @@
 #include "../include/generator-stack/GeneratorStack.h"
 
-GeneratorStack::GeneratorStack(Configuration *config, int numberPlayers)
+GeneratorStack::GeneratorStack(Configuration *config, int numberPlayers, int* playDirection, int* turnCount, bool* isLightSide)
 {
     this->config = config;
     this->numberPlayers = numberPlayers;
+    this->playDirection=playDirection;
+    this->turnCount=turnCount;
+    this->isLightSide=isLightSide;
 }
 
 GeneratorStack::~GeneratorStack() {}
@@ -33,11 +36,10 @@ void GeneratorStack::generateDecks()
 
     for (int i = 0; i < numberDecks; i++)
     {
-        GeneratorCards *generator = new GeneratorCards(this->config);
+        GeneratorCards *generator = new GeneratorCards(this->config, this->playDirection, this->turnCount, this->isLightSide);
         Card **cards = generator->generateCards();
         Deck *deck = new Deck(cards, generator->getNumberCards());
         decks[i] = deck;
-        // Guardar info del primer generador para usar despues
         if (i == 0)
         {
             totalNumberCards = numberDecks * generator->getNumberCards();

@@ -1,22 +1,20 @@
 #include "../include/action/Flip.h"
-
-Flip::Flip()
+#include <iostream>
+Flip::Flip(bool *esLadoClaro)
 {
     this->nombre = "FLIP";
+    this->esLadoClaro = esLadoClaro;
 }
 void Flip::realizarAccion()
 {
-    if (*ladoEnJuego == LADO_CLARO)
+    if (*esLadoClaro)
     {
-        *ladoEnJuego = LADO_OSCURO;
+        *esLadoClaro = false;
+        std::cout << "\033[33m" << "Es FLIP, cambiando al lado oscuro" << "\033[0m" << std::endl;
     }
     else
     {
-        *ladoEnJuego = LADO_CLARO;
+        *esLadoClaro = true;
+        std::cout << "\033[33m" << "Es FLIP, cambiando al lado claro" << "\033[0m" << std::endl;
     }
-}
-
-void Flip::setLadoEnJuego(int *ladoEnJuego)
-{
-    this->ladoEnJuego = ladoEnJuego;
 }

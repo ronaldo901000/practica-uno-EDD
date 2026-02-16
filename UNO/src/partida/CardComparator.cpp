@@ -3,6 +3,7 @@
 #include "../include/card/Card.h"
 #include "../include/linked-list/LinkedList.h"
 #include "../include/action/Numero.h"
+#include "../include/action/Color.h"
 #include <iostream>
 using namespace std;
 
@@ -37,6 +38,27 @@ bool CardComparator::canPlayCard(Side *sideCurrent, LinkedList *cardsList, bool 
         else
         {
             sideCardPlayer = cardsList->getElement(i)->getSideDark();
+        }
+
+
+        // hay una excepcion en cartas multicolor, se compara con el color temporal
+        Color *actionColor;
+        if (isLightSide)
+        {
+            actionColor = dynamic_cast<Color *>(sideCurrent->getAction());
+        }
+        else
+        {
+            actionColor = dynamic_cast<Color *>(sideCurrent->getAction());
+        }
+
+        // se define que color se muestra en un multicolor
+        if (actionColor != nullptr)
+        {
+            if (sideCurrent->getTemporalColor() == sideCardPlayer->getColor() || sideCardPlayer->getColor() == "Multicolor")
+            {
+                return true;
+            }
         }
 
         // Coincide color o es comodin multicolor
@@ -87,7 +109,27 @@ bool CardComparator::isValidCard(Card *playerCard, Card *currentCard, bool isLig
     }
 
     // comparaciones
-    if (currentSide->getColor() == playerSide->getColor())
+
+    Color *actionColor;
+    if (isLightSide)
+    {
+        actionColor = dynamic_cast<Color *>(currentCard->getSideLight()->getAction());
+    }
+    else
+    {
+        actionColor = dynamic_cast<Color *>(currentCard->getSideDark()->getAction());
+    }
+
+    // se define que color se muestra en un multicolor
+    if (actionColor != nullptr)
+    {
+        if (currentSide->getTemporalColor() == playerSide->getColor() || playerSide->getColor() == "Multicolor")
+        {
+            return true;
+        }
+    }
+
+    if (currentSide->getColor() == playerSide->getColor() || playerSide->getColor() == "Multicolor")
     {
         return true;
     }
@@ -105,8 +147,9 @@ bool CardComparator::isValidCard(Card *playerCard, Card *currentCard, bool isLig
             {
                 return true;
             }
-            //si son cartas numericas con diferente valor 
-            else{
+            // si son cartas numericas con diferente valor
+            else
+            {
                 return false;
             }
         }
