@@ -9,7 +9,6 @@ Salto ::Salto(bool esLadoClaro, int *turnoActual, int *direccionJuego)
 }
 Salto ::~Salto() {}
 
-// pendiente de implementacion
 void Salto ::realizarAccion()
 {
     if (esLadoClaro)
@@ -17,10 +16,18 @@ void Salto ::realizarAccion()
         if (*direccionJuego == DERECHA)
         {
             (*turnoActual)++;
+            if ((*turnoActual) >= numeroJugadores)
+            {
+                *turnoActual = 0;
+            }
         }
         else
         {
             (*turnoActual)--;
+            if ((*turnoActual) <= -1)
+            {
+                *turnoActual = numeroJugadores - 1;
+            }
         }
         std::cout << "\033[32m" << "El siguiente jugador pierde su turno" << "\033[0m" << std::endl;
     }
@@ -37,4 +44,7 @@ void Salto ::realizarAccion()
         }
         std::cout << "\033[32m" << "Todos pierden su turno, juegas de nuevo" << "\033[0m" << std::endl;
     }
+}
+void Salto::setNumeroJugadores(int numeroJugadores){
+    this->numeroJugadores= numeroJugadores;
 }

@@ -6,7 +6,7 @@ Partida::Partida(
     Configuration *config,
     int *playDirection,
     int *turnCount,
-     bool *sidePlay)
+    bool *sidePlay)
 {
     this->playerList = playerList;
     this->numberPlayers = playerList->getSize();
@@ -21,6 +21,11 @@ Partida::Partida(
     this->sidePlay = sidePlay;
 
     this->turnCount = turnCount;
+    for (int i = 0; i < playerList->getSize(); i++)
+    {
+        playerList->getElement(i)->setConfig(this->config);
+    }
+    
 }
 
 void Partida::start()
@@ -46,7 +51,7 @@ void Partida::startRounds(CardsManager *manager)
     {
         // el jugador en turno juega sus cartas
         Player *player = playerList->getElement(*turnCount);
-        player->playCard(*this->sidePlay, stack, discards, config->isRObberyMode(), manager);
+        player->playCard(*this->sidePlay, stack, discards, config->isRObberyMode(), manager, stack, playerList,direction,turnCount);
 
         if (player->isWinner())
         {
@@ -71,6 +76,27 @@ void Partida::startRounds(CardsManager *manager)
     }
 }
 
+void Partida::definePlayerNext(Player *nextPlayer)
+{
+    if (*direction == RIGHT)
+    {
+        int positionNext = (*turnCount)++;
+        if (positionNext == playerList->getSize())
+        {
+            positionNext = 0;
+        }
+        nextPlayer = playerList->getNodeByIndex(positionNext)->getNextNode()->getElement();
+    }
+    else if (*direction == LEFT)
+    {
+        int positionNext = (*turnCount)--;
+        if (positionNext == -1)
+        {
+            positionNext = playerList->getSize() - 1;
+        }
+        nextPlayer = playerList->getNodeByIndex(positionNext)->getNextNode()->getElement();
+    }
+}
 int *Partida::getDireccion()
 {
     return this->direction;

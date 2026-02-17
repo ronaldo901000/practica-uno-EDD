@@ -1,12 +1,11 @@
 #ifndef ROBO_MAS_DOS_FLIP_H
 #define ROBO_MAS_DOS_FLIP_H
-#include "Robo.h"
-class RoboMasDosFlip : public Robo
+#include "RoboMulticolor.h"
+class RoboMasDosFlip : public RoboMulticolor
 {
 private:
 public:
     RoboMasDosFlip();
-    void realizarAccion() override;
 };
 
 #endif

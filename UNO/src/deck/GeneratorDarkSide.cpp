@@ -5,13 +5,15 @@ GeneratorDarkSide::GeneratorDarkSide(
     int numberCards, 
     int* playDirection, 
     int* turnCount,
-    bool* isLightSide)
+    bool* isLightSide,
+    int numberPlayers)
 {
     this->cards = cards;
     this->numberCards = numberCards;
     this->playDirection=playDirection;
     this->turnCount=turnCount;
     this->isLightSide=isLightSide;
+    this->numberPlayers=numberPlayers;
 }
 
 GeneratorDarkSide::~GeneratorDarkSide()
@@ -103,6 +105,7 @@ void GeneratorDarkSide ::generateSpecialCards(ColorEnum color, bool esClaro)
             if (i == 0)
             {
                 Salto *action = new Salto(esClaro, turnCount, playDirection);
+                action->setNumeroJugadores(this->numberPlayers);
                 SideDark *side = new SideDark(action, color);
                 cards[randomIndex]->setSideDark(side);
             }
@@ -141,6 +144,8 @@ void GeneratorDarkSide::createWildCards()
 
                 RoboMasSeisFlip *action = new RoboMasSeisFlip();
                 SideDark *side = new SideDark(action, ColorEnum::Multicolor);
+                action->setSide(side);
+                action->setEsLadoClaro(isLightSide);
                 cards[randomIndex]->setSideDark(side);
             }
         }

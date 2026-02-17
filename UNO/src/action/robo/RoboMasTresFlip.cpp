@@ -6,7 +6,6 @@ RoboMasTresFlip ::RoboMasTresFlip()
     this->cantidadRobo = 3;
 }
 
-// pendiente de implementacion
-void RoboMasTresFlip::realizarAccion()
-{
+void RoboMasTresFlip::realizarAccion(){
+    
 }

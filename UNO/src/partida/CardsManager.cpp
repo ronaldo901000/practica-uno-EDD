@@ -8,6 +8,7 @@
 #include "../include/action/Numero.h"
 #include "../include/partida/CardComparator.h"
 #include "../include/action/Color.h"
+#include "../include/action/robo/RoboMulticolor.h"
 
 using namespace std;
 CardsManager::CardsManager() {}
@@ -57,12 +58,14 @@ void CardsManager::viewCurrentCard(Card *card, bool isLightSide)
 
     //se define que color se muestra en un multicolor
     Color* actionColor =dynamic_cast<Color*>(side->getAction());
-    if(actionColor != nullptr){
+    RoboMulticolor* actionRobo = dynamic_cast<RoboMulticolor*>(side->getAction());
+    if(actionColor != nullptr || actionRobo !=nullptr){
         color=side->getTemporalColor();
     }
     else{
         color=side->getColor();
     }
+    
 
     Numero *numero = dynamic_cast<Numero *>(side->getAction());
     if (numero != nullptr)

@@ -12,13 +12,16 @@ Card ::Card(Side *sideLight, Side *sideDark)
     this->sideDark = sideDark;
 }
 
-void Card ::applyEffect(bool isLightSide){
-    Side* side;
-    if(isLightSide){
-        side=this->sideLight;
+void Card ::applyEffect(bool isLightSide)
+{
+    Side *side;
+    if (isLightSide)
+    {
+        side = this->sideLight;
     }
-    else{
-        side=this->sideDark;
+    else
+    {
+        side = this->sideDark;
     }
     side->getAction()->realizarAccion();
 }
@@ -34,4 +37,13 @@ Side *Card::getSideDark()
 void Card ::setSideDark(SideDark *sideDark)
 {
     this->sideDark = sideDark;
+}
+
+int Card::getIndexTemp()
+{
+    return this->indexTemp;
+}
+void Card::setIndexTemp(int indexTemp)
+{
+    this->indexTemp = indexTemp;
 }

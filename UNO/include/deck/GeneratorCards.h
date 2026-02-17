@@ -28,6 +28,7 @@ private:
     int* playDirection;
     int* turnCout;
     bool* esLadoClaro;
+    int numberPlayers;
 
     const int CANTIDAD_FLIP = 116;
     const int CANTIDAD_NORMAL = 108;
@@ -51,7 +52,7 @@ private:
     void generateFlipCards(ColorEnum color,Card** cards);
 
 public:
-    GeneratorCards(Configuration* config,int* playDirection, int* turnCout, bool* esLadoClaro);
+    GeneratorCards(Configuration* config,int* playDirection, int* turnCout, bool* esLadoClaro, int numberPlayers);
     ~GeneratorCards();
     Card** generateCards();
     int getNumberCards();

@@ -7,7 +7,7 @@ LinkedList::LinkedList()
     this->size = 0;
 }
 
-LinkedList::~LinkedList() 
+LinkedList::~LinkedList()
 {
     // Liberar todos los nodos
     Node *current = initialNode;
@@ -58,7 +58,7 @@ Node *LinkedList::getNodeByIndex(int index)
     {
         return nullptr;
     }
-    
+
     Node *current = initialNode;
     for (int i = 0; i < index; i++)
     {
@@ -71,7 +71,8 @@ void LinkedList::deleteElement(int index)
 {
     if (isEmpty() || index < 0 || index >= size)
     {
-        return; 
+        cout << "El indice: '" << index << "' esta fuera de rango para eliminar" << endl;
+        return;
     }
 
     // Solo hay un nodo
@@ -99,12 +100,12 @@ void LinkedList::deleteElement(int index)
     Node *current = previous->getNextNode();
 
     previous->setNextNode(current->getNextNode());
-    
+
     if (current == endNode)
     {
         endNode = previous;
     }
-    
+
     delete current;
     size--;
 }

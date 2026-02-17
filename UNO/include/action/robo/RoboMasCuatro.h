@@ -1,13 +1,12 @@
 #ifndef ROBO_MAS_CUATRO_H
 #define ROBO_MAS_CUATRO_H
-#include "Robo.h"
+#include "RoboMulticolor.h"
 
-class RoboMasCuatro : public Robo
+class RoboMasCuatro : public RoboMulticolor
 {
 private:
 public:
     RoboMasCuatro();
 
-    void realizarAccion() override;
 };
 #endif

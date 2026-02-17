@@ -46,6 +46,8 @@ public:
     void setDireccion(int *direccion);
 
     bool getSidePlay();
+
+    void definePlayerNext(Player* next);
 };
 
 #endif

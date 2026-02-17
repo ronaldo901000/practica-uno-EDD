@@ -1,13 +1,12 @@
 #ifndef ROBO_MAS_SEIS_FLIP_H
 #define ROBO_MAS_SEIS_FLIP_H
-#include "Robo.h"
+#include "RoboMulticolor.h"
 
-class RoboMasSeisFlip : public Robo
+class RoboMasSeisFlip : public RoboMulticolor
 {
 private:
 public:
     RoboMasSeisFlip();
-    void realizarAccion() override;
 };
 
 #endif

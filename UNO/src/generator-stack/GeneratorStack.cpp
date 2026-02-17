@@ -36,7 +36,7 @@ void GeneratorStack::generateDecks()
 
     for (int i = 0; i < numberDecks; i++)
     {
-        GeneratorCards *generator = new GeneratorCards(this->config, this->playDirection, this->turnCount, this->isLightSide);
+        GeneratorCards *generator = new GeneratorCards(this->config, this->playDirection, this->turnCount, this->isLightSide, this->numberPlayers);
         Card **cards = generator->generateCards();
         Deck *deck = new Deck(cards, generator->getNumberCards());
         decks[i] = deck;

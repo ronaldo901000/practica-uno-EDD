@@ -1,12 +1,9 @@
-#include "../include/action/Color.h"
-using namespace std;
-#include <iostream>
+#include "../include/action/robo/RoboMulticolor.h"
 #include "limits"
 #include "../include/side/Side.h"
-Color::Color(bool esLadoClaro)
+
+RoboMulticolor::RoboMulticolor()
 {
-    this->nombre = "COMODIN COLOR";
-    this->esLadoClaro = esLadoClaro;
 
     colorsLightSide[0] = "Rojo";
     colorsLightSide[1] = "Azul";
@@ -19,16 +16,14 @@ Color::Color(bool esLadoClaro)
     colorsDarkSide[3] = "Violeta";
 }
 
-Color::~Color() {}
-
-void Color::realizarAccion()
+void RoboMulticolor ::realizarAccion()
 {
     cout << "Elige un color para esta carta: " << endl;
     if (esLadoClaro)
     {
         for (int i = 0; i < 4; i++)
         {
-            cout << (i + 1) << ". " << colorsLightSide[i]<<endl;
+            cout << (i + 1) << ". " << colorsLightSide[i] << endl;
         }
     }
     else
@@ -70,7 +65,6 @@ void Color::realizarAccion()
     this->side->setTemporalColor(selectedColor);
 }
 
-void Color::setSide(Side *side)
-{
-    this->side = side;
+void RoboMulticolor::setSide(Side* side){
+    this->side=side;
 }

@@ -4,7 +4,9 @@
 
 class RoboMasDos : public Robo{
     private:
-
+        int* acumulate;
+        int* numberCards;
+        
     public:
     RoboMasDos();
     void realizarAccion()override;

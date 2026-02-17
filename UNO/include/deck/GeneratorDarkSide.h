@@ -34,7 +34,7 @@ private:
     const int CANT_MISMO_NUMERO_POR_COLOR = 2;
     const int CANT_CARTAS_ESPECIALES = 3;
     const int CANT_MISMA_CARTA_ESPECIAL_POR_COLOR = 2;
-
+    int numberPlayers;
     Numero *generateNumeric(int number);
     void generateAllCardsWithColor();
     void generateFlipCards(ColorEnum color);
@@ -44,7 +44,7 @@ private:
     void generateSpecialCards(ColorEnum color, bool esClaro);
 
 public:
-    GeneratorDarkSide(Card **cards, int numberCards, int* playDirection, int* turnCount,  bool *isLightSide);
+    GeneratorDarkSide(Card **cards, int numberCards, int* playDirection, int* turnCount,  bool *isLightSide, int numberPlayers);
     ~GeneratorDarkSide();
     Card **getCards();
     void createDarkSide();

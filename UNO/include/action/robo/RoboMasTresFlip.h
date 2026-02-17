@@ -7,7 +7,7 @@ class RoboMasTresFlip : public Robo
 private:
 public:
     RoboMasTresFlip();
-    void realizarAccion() override;
+    void realizarAccion()override;
 };
 
 #endif

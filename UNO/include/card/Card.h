@@ -7,6 +7,7 @@ class Card
 private:
     Side *sideLight;
     Side *sideDark;
+    int indexTemp;
 
 public:
     Card(Side *sideLight);
@@ -14,8 +15,9 @@ public:
     ~Card();
     Side *getSideLight();
     Side *getSideDark();
-    void setSideDark(SideDark* sideDark);
+    void setSideDark(SideDark *sideDark);
     void applyEffect(bool isLightSide);
-
+    int getIndexTemp();
+    void setIndexTemp(int indexTemp);
 };
 #endif

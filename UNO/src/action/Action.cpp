@@ -9,3 +9,7 @@ void Action::setPlayer(Player *player)
 std::string Action::getNombre(){
     return this->nombre;
 }
+
+void Action::setEsLadoClaro(bool esLadoClaro){
+    this->esLadoClaro=esLadoClaro;
+}

@@ -2,7 +2,7 @@
 #include "string"
 #include <iostream>
 
-GeneratorCards ::GeneratorCards(Configuration *config,int* playDirection, int* turnCout, bool* esLadoClaro)
+GeneratorCards ::GeneratorCards(Configuration *config,int* playDirection, int* turnCout, bool* esLadoClaro, int numberPlayers)
 {
     this->config = config;
     this->ultimaPosicionOcupada = 0;
@@ -11,6 +11,7 @@ GeneratorCards ::GeneratorCards(Configuration *config,int* playDirection, int* t
     this->playDirection=playDirection;
     this->turnCout=turnCout;
     this->esLadoClaro=esLadoClaro;
+    this->numberPlayers=numberPlayers;
 }
 
 GeneratorCards::~GeneratorCards() {}
@@ -26,7 +27,7 @@ Card** GeneratorCards ::generateCards()
     // si es flip se genera el lado oscuro
     if (config->isFlip())
     {
-        this->generatorDarkSide = new GeneratorDarkSide(cards, this->cantidadCartas, this->playDirection, turnCout, this->esLadoClaro);
+        this->generatorDarkSide = new GeneratorDarkSide(cards, this->cantidadCartas, this->playDirection, turnCout, this->esLadoClaro, numberPlayers);
         this->generatorDarkSide->createDarkSide();
     }
     return cards;
@@ -132,6 +133,7 @@ void GeneratorCards ::generateSpecialCards(ColorEnum color, bool esClaro, Card**
             if (i == 0)
             {
                 Salto *action = new Salto(esClaro, turnCout, playDirection);
+                action->setNumeroJugadores(this->numberPlayers);
                 SideLight *side = new SideLight(action, color);
                 cards[ultimaPosicionOcupada] = new Card(side);
                 (ultimaPosicionOcupada)++;
@@ -149,12 +151,14 @@ void GeneratorCards ::generateSpecialCards(ColorEnum color, bool esClaro, Card**
                 if (!config->isFlip())
                 {
                     RoboMasDos *action = new RoboMasDos();
+                    action->setEsAcumulacion(config->isAccumulation());
                     SideLight *side = new SideLight(action, color);
                     cards[ultimaPosicionOcupada] = new Card(side);
                 }
                 else
                 {
                     RoboMasUnoFlip *action = new RoboMasUnoFlip();
+                    action->setEsAcumulacion(config->isAccumulation());
                     SideLight *side = new SideLight(action, color);
                     cards[ultimaPosicionOcupada] = new Card(side);
                 }
@@ -180,14 +184,20 @@ void GeneratorCards::createWildCards(bool isLight, Card** cards)
             {
                 if (!config->isFlip())
                 {
-                    RoboMasCuatro *action = new RoboMasCuatro();
+                    RoboMulticolor *action = new RoboMasCuatro();
+                    action->setEsAcumulacion(config->isAccumulation());
                     SideLight *side = new SideLight(action, ColorEnum::Multicolor);
+                    action->setSide(side);
+                    action->setEsLadoClaro(esLadoClaro);
                     cards[ultimaPosicionOcupada] = new Card(side);
                 }
                 else
                 {
                     RoboMasDosFlip *action = new RoboMasDosFlip();
+                    action->setEsAcumulacion(config->isAccumulation());
                     SideLight *side = new SideLight(action, ColorEnum::Multicolor);
+                    action->setSide(side);
+                    action->setEsLadoClaro(esLadoClaro);
                     cards[ultimaPosicionOcupada] = new Card(side);
                 }
             }

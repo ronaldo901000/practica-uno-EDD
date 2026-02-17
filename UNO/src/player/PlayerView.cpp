@@ -103,7 +103,7 @@ int PlayerView::actionsMenu(bool hasValidCards)
             cout << "ACCIONES" << endl;
             cout << "1. Poner Carta" << endl;
             cout << "2. Robar carta" << endl;
-            cout << "Seleccione una opcion: ";
+            cout << "Selecciona una opcion: ";
 
             if (!(cin >> opcion))
             {
@@ -116,7 +116,7 @@ int PlayerView::actionsMenu(bool hasValidCards)
 
             if (opcion < 1 || opcion > 2)
             {
-                cout << "Opcion fuera de rango. Intente de nuevo.\n\n";
+                cout << "Opcion fuera de rango. Intenta de nuevo.\n\n";
                 continue;
             }
 
@@ -133,6 +133,7 @@ int PlayerView::actionsMenu(bool hasValidCards)
         // se agrega automaticamete el numero 2 que significa el robo de una carta de la pila
         opcion = 2;
     }
+    cout << endl;
     return opcion;
 }
 
@@ -163,8 +164,6 @@ int PlayerView::selectCard()
 
     return opcion - 1;
 }
-
-#include <limits>
 
 bool PlayerView::askContinueDraw()
 {
@@ -201,5 +200,127 @@ bool PlayerView::askContinueDraw()
 
 void PlayerView::alert()
 {
-    std::cout << "\033[1;31m"<< "La carta que elegiste no es valida, vuelve a intentarlo" <<"\033[0m"<< endl;
+    std::cout << "\033[1;31m" << "La carta que elegiste no es valida, vuelve a intentarlo" << "\033[0m" << endl;
+}
+
+// menu que solo muestra las cartas que son para responder para acumular
+int PlayerView::accumulationMenu(bool isEmpty, int totalAcumulacion)
+{
+    int opcion;
+    if (isEmpty)
+    {
+
+        cout << "No tienes cartas para responder, debes robar " << totalAcumulacion << " cartas.";
+        cout << "Presiona enter para Robar" << endl;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.get();
+        // se agrega automaticamete el numero 2 que significa el robo de una carta de la pila
+        opcion = 2;
+    }
+    while (true)
+    {
+        cout << "ACCIONES" << endl;
+        cout << "1. Seguir acumulacion" << endl;
+        cout << "2. Robar carta" << endl;
+        cout << "Selecciona una opcion: ";
+
+        if (!(cin >> opcion))
+        {
+            // Si escriben algo diferente de numeros
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Entrada invalida, Solo numeros.\n\n";
+            continue;
+        }
+
+        if (opcion < 1 || opcion > 2)
+        {
+            cout << "Opcion fuera de rango. Intenta de nuevo.\n\n";
+            continue;
+        }
+
+        break;
+    }
+    return opcion;
+}
+
+void PlayerView::printList(LinkedList *list, bool isLightSide)
+{
+    cout << "\033[1;31m";
+    cout << "Turno para seguir acumulando de: " << player->getName() << endl;
+    cout << "|----------------------------------|" << endl;
+    cout << "|     CARTAS EN DE ACUMULACION     |" << endl;
+    cout << "|----------------------------------|" << endl;
+    cout << "|  No.           ACCION            |" << endl;
+    cout << "|----------------------------------|" << endl;
+    for (int i = 0; i < list->getSize(); i++)
+    {
+        Card *card;
+        string accion;
+        int indexTemp;
+        if (isLightSide)
+        {
+            card = list->getElement(i);
+            accion = card->getSideLight()->getAction()->getNombre();
+            indexTemp = card->getIndexTemp();
+        }
+        else
+        {
+            card = list->getElement(i);
+            accion = card->getSideDark()->getAction()->getNombre();
+            indexTemp = card->getIndexTemp();
+        }
+        cout << "| "
+             << setw(6) << left << (indexTemp + 1)
+             << "  "
+             << setw(15) << left << accion
+             << " "
+             << " |"
+             << endl;
+    }
+    cout << "|------------------------------------|" << endl;
+    cout << "\033[0m";
+    cout << endl;
+    cout << endl;
+}
+
+int PlayerView::selectCardAcumulation(LinkedList *listCardsAcumulation)
+{
+    int opcion;
+    while (true)
+    {
+        cout << "Elige con el indice, una carta disponible: ";
+
+        if (!(cin >> opcion))
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Entrada invalida. Solo numeros" << endl;
+            continue;
+        }
+
+        for (int i = 0; i < listCardsAcumulation->getSize(); i++)
+        {
+            if ((opcion - 1) == listCardsAcumulation->getElement(i)->getIndexTemp())
+            {
+                return i;
+            }
+        }
+
+        cout << "Selecciona alguno de los indices existentes en la tabla" << endl;
+    }
+}
+
+void PlayerView::winner()
+{
+
+    cout << "¡¡¡¡¡Felicidades " << player->getName() << "Has ganado esta partida!!!!!!" << endl;
+}
+void PlayerView::acumulationEnd(Player *nextPlayer, int currentAcumulation)
+{
+    cout << "¡¡El Jugador: " << nextPlayer->getName() << " roba '" << currentAcumulation << "' cartas de la pila!!" << endl;
+    cout << "Presiona enter para Continuar" << endl;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
+    system("clear");
 }
