@@ -175,7 +175,7 @@ void GeneratorCards::createWildCards(bool isLight, Card** cards)
         {
             if (i == 0)
             {
-                Color *action = new Color(isLight);
+                Color *action = new Color(esLadoClaro);
                 SideLight *side = new SideLight(action, ColorEnum::Multicolor);
                 cards[ultimaPosicionOcupada] = new Card(side);
                 action->setSide(side);
@@ -188,7 +188,7 @@ void GeneratorCards::createWildCards(bool isLight, Card** cards)
                     action->setEsAcumulacion(config->isAccumulation());
                     SideLight *side = new SideLight(action, ColorEnum::Multicolor);
                     action->setSide(side);
-                    action->setEsLadoClaro(esLadoClaro);
+                    action->setEsLadoClaro(this->esLadoClaro);
                     cards[ultimaPosicionOcupada] = new Card(side);
                 }
                 else
@@ -197,7 +197,7 @@ void GeneratorCards::createWildCards(bool isLight, Card** cards)
                     action->setEsAcumulacion(config->isAccumulation());
                     SideLight *side = new SideLight(action, ColorEnum::Multicolor);
                     action->setSide(side);
-                    action->setEsLadoClaro(esLadoClaro);
+                    action->setEsLadoClaro(this->esLadoClaro);
                     cards[ultimaPosicionOcupada] = new Card(side);
                 }
             }

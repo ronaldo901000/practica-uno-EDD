@@ -19,7 +19,7 @@ RoboMulticolor::RoboMulticolor()
 void RoboMulticolor ::realizarAccion()
 {
     cout << "Elige un color para esta carta: " << endl;
-    if (esLadoClaro)
+    if (*esLadoClaro)
     {
         for (int i = 0; i < 4; i++)
         {
@@ -54,7 +54,7 @@ void RoboMulticolor ::realizarAccion()
         break;
     }
     std::string selectedColor;
-    if (this->esLadoClaro)
+    if (*this->esLadoClaro)
     {
         selectedColor = colorsLightSide[opcion - 1];
     }

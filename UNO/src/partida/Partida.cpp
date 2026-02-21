@@ -76,27 +76,6 @@ void Partida::startRounds(CardsManager *manager)
     }
 }
 
-void Partida::definePlayerNext(Player *nextPlayer)
-{
-    if (*direction == RIGHT)
-    {
-        int positionNext = (*turnCount)++;
-        if (positionNext == playerList->getSize())
-        {
-            positionNext = 0;
-        }
-        nextPlayer = playerList->getNodeByIndex(positionNext)->getNextNode()->getElement();
-    }
-    else if (*direction == LEFT)
-    {
-        int positionNext = (*turnCount)--;
-        if (positionNext == -1)
-        {
-            positionNext = playerList->getSize() - 1;
-        }
-        nextPlayer = playerList->getNodeByIndex(positionNext)->getNextNode()->getElement();
-    }
-}
 int *Partida::getDireccion()
 {
     return this->direction;

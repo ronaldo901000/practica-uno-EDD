@@ -41,7 +41,7 @@ private:
     void createWildCards();
     void generateCardNumeric(ColorEnum color);
     int generateIndexRandom(int maxIndex);
-    void generateSpecialCards(ColorEnum color, bool esClaro);
+    void generateSpecialCards(ColorEnum color);
 
 public:
     GeneratorDarkSide(Card **cards, int numberCards, int* playDirection, int* turnCount,  bool *isLightSide, int numberPlayers);

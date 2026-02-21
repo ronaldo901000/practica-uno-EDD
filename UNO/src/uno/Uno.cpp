@@ -100,7 +100,7 @@ void Uno::getResponse(bool *response)
     cout << "1)SI      2)NO" << endl;
     do
     {
-        cout << "-->";
+        cout << "--> ";
         cin >> value;
         if (cin.fail())
         {

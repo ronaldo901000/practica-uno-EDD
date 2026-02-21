@@ -3,7 +3,7 @@ using namespace std;
 #include <iostream>
 #include "limits"
 #include "../include/side/Side.h"
-Color::Color(bool esLadoClaro)
+Color::Color(bool *esLadoClaro)
 {
     this->nombre = "COMODIN COLOR";
     this->esLadoClaro = esLadoClaro;
@@ -24,7 +24,7 @@ Color::~Color() {}
 void Color::realizarAccion()
 {
     cout << "Elige un color para esta carta: " << endl;
-    if (esLadoClaro)
+    if (*esLadoClaro)
     {
         for (int i = 0; i < 4; i++)
         {
@@ -59,7 +59,7 @@ void Color::realizarAccion()
         break;
     }
     std::string selectedColor;
-    if (this->esLadoClaro)
+    if (*this->esLadoClaro)
     {
         selectedColor = colorsLightSide[opcion - 1];
     }

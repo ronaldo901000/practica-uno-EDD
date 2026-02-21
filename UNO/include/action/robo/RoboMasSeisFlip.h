@@ -6,7 +6,7 @@ class RoboMasSeisFlip : public RoboMulticolor
 {
 private:
 public:
-    RoboMasSeisFlip();
+    RoboMasSeisFlip(bool* isLightSide);
 };
 
 #endif

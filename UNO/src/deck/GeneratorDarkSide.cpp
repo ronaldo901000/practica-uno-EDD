@@ -39,26 +39,26 @@ void GeneratorDarkSide ::generateAllCardsWithColor()
         if (i == ROSA)
         {
             generateCardNumeric(ColorEnum::Rosa);
-            generateSpecialCards(ColorEnum::Rosa, false);
+            generateSpecialCards(ColorEnum::Rosa);
             generateFlipCards(ColorEnum::Rosa);
         }
 
         else if (i == TURQUEZA)
         {
             generateCardNumeric(ColorEnum::Turquesa);
-            generateSpecialCards(ColorEnum::Turquesa, false);
+            generateSpecialCards(ColorEnum::Turquesa);
             generateFlipCards(ColorEnum::Turquesa);
         }
         else if (i == NARANJA)
         {
             generateCardNumeric(ColorEnum::Naranja);
-            generateSpecialCards(ColorEnum::Naranja, false);
+            generateSpecialCards(ColorEnum::Naranja);
             generateFlipCards(ColorEnum::Naranja);
         }
         else if (i == VIOLETA)
         {
             generateCardNumeric(ColorEnum::Violeta);
-            generateSpecialCards(ColorEnum::Violeta, false);
+            generateSpecialCards(ColorEnum::Violeta);
             generateFlipCards(ColorEnum::Violeta);
         }
     }
@@ -95,7 +95,7 @@ void GeneratorDarkSide ::generateFlipCards(ColorEnum color)
         cards[randomIndex]->setSideDark(side);
     }
 }
-void GeneratorDarkSide ::generateSpecialCards(ColorEnum color, bool esClaro)
+void GeneratorDarkSide ::generateSpecialCards(ColorEnum color)
 {
     for (int i = 0; i < CANT_CARTAS_ESPECIALES; i++)
     {
@@ -104,7 +104,7 @@ void GeneratorDarkSide ::generateSpecialCards(ColorEnum color, bool esClaro)
             int randomIndex = generateIndexRandom(this->numberCards);
             if (i == 0)
             {
-                Salto *action = new Salto(esClaro, turnCount, playDirection);
+                Salto *action = new Salto(this->isLightSide, turnCount, playDirection);
                 action->setNumeroJugadores(this->numberPlayers);
                 SideDark *side = new SideDark(action, color);
                 cards[randomIndex]->setSideDark(side);
@@ -134,7 +134,7 @@ void GeneratorDarkSide::createWildCards()
 
             if (i == 0)
             {
-                Color *action = new Color(false);
+                Color *action = new Color(this->isLightSide);
                 SideDark *side = new SideDark(action, ColorEnum::Multicolor);
                 cards[randomIndex]->setSideDark(side);
                 action->setSide(side);
@@ -142,10 +142,9 @@ void GeneratorDarkSide::createWildCards()
             else if (i == 1)
             {
 
-                RoboMasSeisFlip *action = new RoboMasSeisFlip();
+                RoboMasSeisFlip *action = new RoboMasSeisFlip(this->isLightSide);
                 SideDark *side = new SideDark(action, ColorEnum::Multicolor);
                 action->setSide(side);
-                action->setEsLadoClaro(isLightSide);
                 cards[randomIndex]->setSideDark(side);
             }
         }

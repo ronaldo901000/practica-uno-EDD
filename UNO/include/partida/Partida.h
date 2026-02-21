@@ -47,7 +47,6 @@ public:
 
     bool getSidePlay();
 
-    void definePlayerNext(Player* next);
 };
 
 #endif

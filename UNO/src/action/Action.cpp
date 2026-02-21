@@ -10,6 +10,6 @@ std::string Action::getNombre(){
     return this->nombre;
 }
 
-void Action::setEsLadoClaro(bool esLadoClaro){
+void Action::setEsLadoClaro(bool* esLadoClaro){
     this->esLadoClaro=esLadoClaro;
 }

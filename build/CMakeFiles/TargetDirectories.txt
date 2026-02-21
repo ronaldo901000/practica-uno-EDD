@@ -1,0 +1,3 @@
+/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles/UNO.dir
+/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles/edit_cache.dir
+/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles/rebuild_cache.dir
