@@ -19,5 +19,6 @@ public:
     void applyEffect(bool isLightSide);
     int getIndexTemp();
     void setIndexTemp(int indexTemp);
+    char getColorChar(bool isLightSide);
 };
 #endif

@@ -47,3 +47,18 @@ void Card::setIndexTemp(int indexTemp)
 {
     this->indexTemp = indexTemp;
 }
+
+char Card ::getColorChar(bool isLightSide){
+    char c;
+    if(isLightSide){
+        if(getSideLight()->getColor()=="Azul"){
+            return 'a';
+        }
+        c = getSideLight()->getColor().at(0);
+    }
+    else{
+        c = getSideDark()->getColor().at(0);
+    }
+    
+    return c;
+}

@@ -10,6 +10,7 @@
 #include "../include/action/robo/Robo.h"
 #include "../include/circular-list/CircularList.h"
 #include <iostream>
+#include "../include/player/CardSorter.h"
 using namespace std;
 
 Player::Player(std::string name, int id)
@@ -19,6 +20,7 @@ Player::Player(std::string name, int id)
     this->cardsList = new LinkedList();
     this->view = new PlayerView(this);
     this->numberDraw = 0;
+    this->sorter = new CardSorter();
 }
 Player ::Player()
 {
@@ -32,6 +34,8 @@ Player::~Player() {}
 void Player ::playCard(bool isLightSide, Stack *stack, Stack *discards,
                        bool isRobberyMode, CardsManager *manager, Stack *stak, CircularList *players, int *direction, int *turnCount)
 {
+    // se ordenan las cartas
+    sortCards(isLightSide);
 
     this->comparator = new CardComparator();
 
@@ -83,7 +87,7 @@ void Player ::playCard(bool isLightSide, Stack *stack, Stack *discards,
 
 void Player::playValidCard(bool isLightSide, Stack *discards, Stack *stak, CircularList *players, int *direction, int *turnCount)
 {
-    CardsManager* manager = new CardsManager();
+    CardsManager *manager = new CardsManager();
     Card *card;
     int selectedCardIndex;
     bool isValidCard;
@@ -119,7 +123,7 @@ void Player::playValidCard(bool isLightSide, Stack *discards, Stack *stak, Circu
     {
 
         nameAction = robo->getNombre();
-        
+
         card->applyEffect(isLightSide);
 
         int currentAcumulation = robo->getCantidadRobo();
@@ -132,8 +136,8 @@ void Player::playValidCard(bool isLightSide, Stack *discards, Stack *stak, Circu
             if (canStack)
             {
                 currentAcumulation += robo->getCantidadRobo();
-                Card* stackedCard=discards->getTopElement();
-                
+                Card *stackedCard = discards->getTopElement();
+
                 stackedCard->applyEffect(isLightSide);
             }
             else
@@ -219,8 +223,11 @@ void Player::addCard(Card *card)
 }
 
 // metodo que ordena las cartas del jugador
-void Player::sortCards()
+void Player::sortCards(bool isLightSide)
 {
+    LinkedList *listaVieja = this->cardsList;
+    this->cardsList = sorter->sortCards(this->cardsList, isLightSide);
+    delete listaVieja;
 }
 
 /*metodo que se encarga de obtener y listar las cartas con las que el jugador puede seguir la acumulacion */
@@ -256,7 +263,6 @@ LinkedList *Player::getCardsAcumulation(bool isLightSide, std::string nombre, in
     return listAcumulation;
 }
 
-// falta el grito de uno!!!
 bool Player ::isWinner()
 {
     if (this->cardsList->isEmpty())

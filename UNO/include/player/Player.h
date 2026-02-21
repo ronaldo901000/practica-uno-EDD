@@ -12,6 +12,7 @@ class CardComparator;
 class CardsManager;
 class Configuration;
 class CircularList;
+class CardSorter;
 
 class Player
 {
@@ -21,6 +22,7 @@ private:
     CardComparator* comparator;
     LinkedList* cardsList;
     PlayerView* view;
+    CardSorter* sorter;
     const int PLAY_CARD=1;
     const int DRAW_CARD=2;
     //contador de robos sucesivos
@@ -44,7 +46,7 @@ public:
 
     void playCard(bool isLightSide, Stack* stack, Stack* discards, bool isRobberyMode, CardsManager* manager0, Stack* stak, CircularList *players, int *direction, int *turnCount);
     void addCard(Card *card);
-    void sortCards();
+    void sortCards(bool isLightSide);
     bool isWinner();
     void playValidCard(bool isLightSide, Stack *discards,Stack* stak,  CircularList* players, int* direction, int* turnCount);
     bool accumulate(int numberCards, bool isLightSide, Stack *stack, string nameAction, Stack* discards);

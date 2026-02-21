@@ -849,6 +849,30 @@ UNO/src/partida/Partida.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/partida/Partida.cpp.s
 .PHONY : UNO/src/partida/Partida.cpp.s
 
+UNO/src/player/CardSorter.o: UNO/src/player/CardSorter.cpp.o
+.PHONY : UNO/src/player/CardSorter.o
+
+# target to build an object file
+UNO/src/player/CardSorter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o
+.PHONY : UNO/src/player/CardSorter.cpp.o
+
+UNO/src/player/CardSorter.i: UNO/src/player/CardSorter.cpp.i
+.PHONY : UNO/src/player/CardSorter.i
+
+# target to preprocess a source file
+UNO/src/player/CardSorter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.i
+.PHONY : UNO/src/player/CardSorter.cpp.i
+
+UNO/src/player/CardSorter.s: UNO/src/player/CardSorter.cpp.s
+.PHONY : UNO/src/player/CardSorter.s
+
+# target to generate assembly for a file
+UNO/src/player/CardSorter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.s
+.PHONY : UNO/src/player/CardSorter.cpp.s
+
 UNO/src/player/Player.o: UNO/src/player/Player.cpp.o
 .PHONY : UNO/src/player/Player.o
 
@@ -1140,6 +1164,9 @@ help:
 	@echo "... UNO/src/partida/Partida.o"
 	@echo "... UNO/src/partida/Partida.i"
 	@echo "... UNO/src/partida/Partida.s"
+	@echo "... UNO/src/player/CardSorter.o"
+	@echo "... UNO/src/player/CardSorter.i"
+	@echo "... UNO/src/player/CardSorter.s"
 	@echo "... UNO/src/player/Player.o"
 	@echo "... UNO/src/player/Player.i"
 	@echo "... UNO/src/player/Player.s"

@@ -517,10 +517,24 @@ CMakeFiles/UNO.dir/UNO/src/player/PlayerView.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/UNO.dir/UNO/src/player/PlayerView.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/UNO/src/player/PlayerView.cpp" -o CMakeFiles/UNO.dir/UNO/src/player/PlayerView.cpp.s
 
+CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o: CMakeFiles/UNO.dir/flags.make
+CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o: /home/ronaldo/Documentos/Primer\ Semestre\ 2026/Cursos/2.\ Estructura\ de\ Datos/Proyectos\ y\ Enunciados/Proyectos/Practica\ Uno\ (UNO)/Codigo\ Fuente\ UNO/UNO/src/player/CardSorter.cpp
+CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o: CMakeFiles/UNO.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o -MF CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o.d -o CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o -c "/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/UNO/src/player/CardSorter.cpp"
+
+CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/UNO/src/player/CardSorter.cpp" > CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.i
+
+CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/UNO/src/player/CardSorter.cpp" -o CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.s
+
 CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.o: CMakeFiles/UNO.dir/flags.make
 CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.o: /home/ronaldo/Documentos/Primer\ Semestre\ 2026/Cursos/2.\ Estructura\ de\ Datos/Proyectos\ y\ Enunciados/Proyectos/Practica\ Uno\ (UNO)/Codigo\ Fuente\ UNO/UNO/src/side/Side.cpp
 CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.o: CMakeFiles/UNO.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.o -MF CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.o.d -o CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.o -c "/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/UNO/src/side/Side.cpp"
 
 CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.i: cmake_force
@@ -534,7 +548,7 @@ CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.s: cmake_force
 CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.o: CMakeFiles/UNO.dir/flags.make
 CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.o: /home/ronaldo/Documentos/Primer\ Semestre\ 2026/Cursos/2.\ Estructura\ de\ Datos/Proyectos\ y\ Enunciados/Proyectos/Practica\ Uno\ (UNO)/Codigo\ Fuente\ UNO/UNO/src/side/SideDark.cpp
 CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.o: CMakeFiles/UNO.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.o -MF CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.o.d -o CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.o -c "/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/UNO/src/side/SideDark.cpp"
 
 CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.i: cmake_force
@@ -548,7 +562,7 @@ CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.s: cmake_force
 CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.o: CMakeFiles/UNO.dir/flags.make
 CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.o: /home/ronaldo/Documentos/Primer\ Semestre\ 2026/Cursos/2.\ Estructura\ de\ Datos/Proyectos\ y\ Enunciados/Proyectos/Practica\ Uno\ (UNO)/Codigo\ Fuente\ UNO/UNO/src/side/SideLight.cpp
 CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.o: CMakeFiles/UNO.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.o -MF CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.o.d -o CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.o -c "/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/UNO/src/side/SideLight.cpp"
 
 CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.i: cmake_force
@@ -562,7 +576,7 @@ CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.s: cmake_force
 CMakeFiles/UNO.dir/UNO/src/stack/Stack.cpp.o: CMakeFiles/UNO.dir/flags.make
 CMakeFiles/UNO.dir/UNO/src/stack/Stack.cpp.o: /home/ronaldo/Documentos/Primer\ Semestre\ 2026/Cursos/2.\ Estructura\ de\ Datos/Proyectos\ y\ Enunciados/Proyectos/Practica\ Uno\ (UNO)/Codigo\ Fuente\ UNO/UNO/src/stack/Stack.cpp
 CMakeFiles/UNO.dir/UNO/src/stack/Stack.cpp.o: CMakeFiles/UNO.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/UNO.dir/UNO/src/stack/Stack.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/UNO.dir/UNO/src/stack/Stack.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/UNO.dir/UNO/src/stack/Stack.cpp.o -MF CMakeFiles/UNO.dir/UNO/src/stack/Stack.cpp.o.d -o CMakeFiles/UNO.dir/UNO/src/stack/Stack.cpp.o -c "/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/UNO/src/stack/Stack.cpp"
 
 CMakeFiles/UNO.dir/UNO/src/stack/Stack.cpp.i: cmake_force
@@ -576,7 +590,7 @@ CMakeFiles/UNO.dir/UNO/src/stack/Stack.cpp.s: cmake_force
 CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.o: CMakeFiles/UNO.dir/flags.make
 CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.o: /home/ronaldo/Documentos/Primer\ Semestre\ 2026/Cursos/2.\ Estructura\ de\ Datos/Proyectos\ y\ Enunciados/Proyectos/Practica\ Uno\ (UNO)/Codigo\ Fuente\ UNO/UNO/src/uno/Menu.cpp
 CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.o: CMakeFiles/UNO.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.o -MF CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.o.d -o CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.o -c "/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/UNO/src/uno/Menu.cpp"
 
 CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.i: cmake_force
@@ -590,7 +604,7 @@ CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.s: cmake_force
 CMakeFiles/UNO.dir/UNO/src/uno/Uno.cpp.o: CMakeFiles/UNO.dir/flags.make
 CMakeFiles/UNO.dir/UNO/src/uno/Uno.cpp.o: /home/ronaldo/Documentos/Primer\ Semestre\ 2026/Cursos/2.\ Estructura\ de\ Datos/Proyectos\ y\ Enunciados/Proyectos/Practica\ Uno\ (UNO)/Codigo\ Fuente\ UNO/UNO/src/uno/Uno.cpp
 CMakeFiles/UNO.dir/UNO/src/uno/Uno.cpp.o: CMakeFiles/UNO.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/UNO.dir/UNO/src/uno/Uno.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/UNO.dir/UNO/src/uno/Uno.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/UNO.dir/UNO/src/uno/Uno.cpp.o -MF CMakeFiles/UNO.dir/UNO/src/uno/Uno.cpp.o.d -o CMakeFiles/UNO.dir/UNO/src/uno/Uno.cpp.o -c "/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/UNO/src/uno/Uno.cpp"
 
 CMakeFiles/UNO.dir/UNO/src/uno/Uno.cpp.i: cmake_force
@@ -635,6 +649,7 @@ UNO_OBJECTS = \
 "CMakeFiles/UNO.dir/UNO/src/partida/Partida.cpp.o" \
 "CMakeFiles/UNO.dir/UNO/src/player/Player.cpp.o" \
 "CMakeFiles/UNO.dir/UNO/src/player/PlayerView.cpp.o" \
+"CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o" \
 "CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.o" \
 "CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.o" \
 "CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.o" \
@@ -677,6 +692,7 @@ UNO: CMakeFiles/UNO.dir/UNO/src/partida/CardsManager.cpp.o
 UNO: CMakeFiles/UNO.dir/UNO/src/partida/Partida.cpp.o
 UNO: CMakeFiles/UNO.dir/UNO/src/player/Player.cpp.o
 UNO: CMakeFiles/UNO.dir/UNO/src/player/PlayerView.cpp.o
+UNO: CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o
 UNO: CMakeFiles/UNO.dir/UNO/src/side/Side.cpp.o
 UNO: CMakeFiles/UNO.dir/UNO/src/side/SideDark.cpp.o
 UNO: CMakeFiles/UNO.dir/UNO/src/side/SideLight.cpp.o
@@ -685,7 +701,7 @@ UNO: CMakeFiles/UNO.dir/UNO/src/uno/Menu.cpp.o
 UNO: CMakeFiles/UNO.dir/UNO/src/uno/Uno.cpp.o
 UNO: CMakeFiles/UNO.dir/build.make
 UNO: CMakeFiles/UNO.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_39) "Linking CXX executable UNO"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/ronaldo/Documentos/Primer Semestre 2026/Cursos/2. Estructura de Datos/Proyectos y Enunciados/Proyectos/Practica Uno (UNO)/Codigo Fuente UNO/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_40) "Linking CXX executable UNO"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/UNO.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
