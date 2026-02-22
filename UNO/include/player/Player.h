@@ -44,7 +44,7 @@ public:
     void setConfig(Configuration* config);
     Configuration* getConfiguration();
 
-    void playCard(bool isLightSide, Stack* stack, Stack* discards, bool isRobberyMode, CardsManager* manager0, Stack* stak, CircularList *players, int *direction, int *turnCount);
+    void playCard(bool isLightSide, Stack* stack, Stack* discards, bool isRobberyMode, CardsManager* manager0, CircularList *players, int *direction, int *turnCount);
     void addCard(Card *card);
     void sortCards(bool isLightSide);
     bool isWinner();

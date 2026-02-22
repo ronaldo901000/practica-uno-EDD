@@ -15,5 +15,7 @@ public:
     void dealCards(Stack *stack, CircularList *players);
     void drawInitialCard(Stack* stack, Stack* discards);
     void viewCurrentCard(Card* card, bool isLightSide);
+    void checkDrawPile(Stack* stack, Stack* discards);
+    void shuffleCards(Card** cards, int size);
 };
 #endif

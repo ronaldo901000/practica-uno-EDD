@@ -32,10 +32,12 @@ Player::~Player() {}
 
 // metodo que sirve para que el jugador juegue sus cartas
 void Player ::playCard(bool isLightSide, Stack *stack, Stack *discards,
-                       bool isRobberyMode, CardsManager *manager, Stack *stak, CircularList *players, int *direction, int *turnCount)
+                       bool isRobberyMode, CardsManager *manager, CircularList *players, int *direction, int *turnCount)
 {
     // se ordenan las cartas
     sortCards(isLightSide);
+    //se revuelven cartas si ya no hay cartas en la pila
+    manager->checkDrawPile(stack, discards);
 
     this->comparator = new CardComparator();
 

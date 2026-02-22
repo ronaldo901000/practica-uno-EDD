@@ -16,6 +16,10 @@ CreatorPlayers::~CreatorPlayers() {}
 */
 CircularList* CreatorPlayers ::createPlayers()
 {
+    cout << "|------------------------------|"<<endl;
+    cout << "|    CREACION DE JUGADORES     |"<<endl;
+    cout << "|------------------------------|"<<endl;
+    cout <<""<<endl;
     // se crea la lista circular
     CircularList *list = new CircularList();
     for (int i = 0; i < this->numberPlayers; i++)

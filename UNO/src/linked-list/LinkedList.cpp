@@ -49,7 +49,15 @@ void LinkedList::insertElement(Card *element)
 Card *LinkedList::getElement(int index)
 {
     Node *node = getNodeByIndex(index);
-    return (node != nullptr) ? node->getElement() : nullptr;
+
+    if (node != nullptr)
+    {
+        return node->getElement();
+    }
+    else
+    {
+        return nullptr;
+    }
 }
 
 Node *LinkedList::getNodeByIndex(int index)

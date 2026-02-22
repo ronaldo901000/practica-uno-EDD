@@ -20,15 +20,17 @@ void Uno::start()
     CreatorPlayers *creator = new CreatorPlayers(config->getNumberPlayers());
     CircularList *list = creator->createPlayers();
 
-    system("clear");
-    cout << "¡Jugadores registrados exitosamente!" << endl;
-
     // se crean los mazos necesario para la partida
     int *playDirection = new int[1];
     int *turnCount = new int[0];
-    bool* sidePlay = new bool(true);
+    bool *sidePlay = new bool(true);
     GeneratorStack *generator = new GeneratorStack(config, list->getSize(), playDirection, turnCount, sidePlay);
     Stack *stack = generator->generate();
+    int numberDecks = (config->getNumberPlayers() - 1) / 6 + 1;
+    system("clear");
+    menu.mostarConfiguracion(list, config, numberDecks, stack->getTop());
+    system("clear");
+
 
     // inicia la partida
     Partida *partida = new Partida(list, stack, config, playDirection, turnCount, sidePlay);
@@ -90,7 +92,6 @@ Configuration *Uno::createConfig()
         flip,
         numberPlayers);
     system("clear");
-    cout << "Configuracion creada exitosamente" << endl;
     return config;
 }
 

@@ -51,7 +51,7 @@ void Partida::startRounds(CardsManager *manager)
     {
         // el jugador en turno juega sus cartas
         Player *player = playerList->getElement(*turnCount);
-        player->playCard(*this->sidePlay, stack, discards, config->isRObberyMode(), manager, stack, playerList,direction,turnCount);
+        player->playCard(*this->sidePlay, stack, discards, config->isRObberyMode(), manager, playerList,direction,turnCount);
 
         if (player->isWinner())
         {
