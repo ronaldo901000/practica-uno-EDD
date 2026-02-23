@@ -32,8 +32,11 @@ Stack *GeneratorStack ::generate()
 void GeneratorStack::generateDecks()
 {
     int numberDecks = (numberPlayers - 1) / 6 + 1;
+
+    //se define un arreglo de mazos
     this->decks = new Deck *[numberDecks];
 
+    //se crea todos los mazos y se guardan en el arreglo
     for (int i = 0; i < numberDecks; i++)
     {
         GeneratorCards *generator = new GeneratorCards(this->config, this->playDirection, this->turnCount, this->isLightSide, this->numberPlayers);
@@ -42,6 +45,7 @@ void GeneratorStack::generateDecks()
         decks[i] = deck;
         if (i == 0)
         {
+            //se define un arreglo donde se van a juntar todas las cartas de los mazos
             totalNumberCards = numberDecks * generator->getNumberCards();
             allCards = new Card *[totalNumberCards];
             numberCardsDeck = generator->getNumberCards();

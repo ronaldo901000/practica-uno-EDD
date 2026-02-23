@@ -11,6 +11,8 @@
 #include "../include/circular-list/CircularList.h"
 #include <iostream>
 #include "../include/player/CardSorter.h"
+#include "../include/action/robo/RoboAleatorio.h"
+
 using namespace std;
 
 Player::Player(std::string name, int id)
@@ -36,7 +38,7 @@ void Player ::playCard(bool isLightSide, Stack *stack, Stack *discards,
 {
     // se ordenan las cartas
     sortCards(isLightSide);
-    //se revuelven cartas si ya no hay cartas en la pila
+    // se revuelven cartas si ya no hay cartas en la pila
     manager->checkDrawPile(stack, discards);
 
     this->comparator = new CardComparator();
@@ -121,7 +123,7 @@ void Player::playValidCard(bool isLightSide, Stack *discards, Stack *stak, Circu
     }
 
     // carta robo tiene una aplicacion de efecto diferente
-    if (robo != nullptr)
+    if (robo != nullptr && dynamic_cast<RoboAleatorio*>(robo) == nullptr)
     {
 
         nameAction = robo->getNombre();
@@ -151,6 +153,22 @@ void Player::playValidCard(bool isLightSide, Stack *discards, Stack *stak, Circu
     // se aplica el efecto que tiene la carta directamente solo si no es carta robo
     else
     {
+
+        RoboAleatorio *roboAleatorio;
+        if (isLightSide)
+        {
+            roboAleatorio = dynamic_cast<RoboAleatorio *>(card->getSideLight()->getAction());
+        }
+        else
+        {
+            roboAleatorio = dynamic_cast<RoboAleatorio *>(card->getSideDark()->getAction());
+        }
+        if (roboAleatorio != nullptr)
+        {
+            roboAleatorio->setStack(stak);
+            roboAleatorio->setPlayers(players);
+        }
+
         card->applyEffect(isLightSide);
     }
     delete manager;

@@ -31,7 +31,6 @@ void Uno::start()
     menu.mostarConfiguracion(list, config, numberDecks, stack->getTop());
     system("clear");
 
-
     // inicia la partida
     Partida *partida = new Partida(list, stack, config, playDirection, turnCount, sidePlay);
     partida->start();

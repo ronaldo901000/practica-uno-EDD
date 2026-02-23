@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/UNO.dir/UNO/src/action/Salto.cpp.o.d"
   "CMakeFiles/UNO.dir/UNO/src/action/robo/Robo.cpp.o"
   "CMakeFiles/UNO.dir/UNO/src/action/robo/Robo.cpp.o.d"
+  "CMakeFiles/UNO.dir/UNO/src/action/robo/RoboAleatorio.cpp.o"
+  "CMakeFiles/UNO.dir/UNO/src/action/robo/RoboAleatorio.cpp.o.d"
   "CMakeFiles/UNO.dir/UNO/src/action/robo/RoboMasCuatro.cpp.o"
   "CMakeFiles/UNO.dir/UNO/src/action/robo/RoboMasCuatro.cpp.o.d"
   "CMakeFiles/UNO.dir/UNO/src/action/robo/RoboMasDos.cpp.o"

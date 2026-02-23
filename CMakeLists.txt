@@ -42,7 +42,7 @@ add_executable(UNO
         UNO/src/action/robo/RoboMasTresFlip.cpp
         UNO/src/action/robo/RoboMasUnoFlip.cpp
         UNO/src/action/robo/RoboMulticolor.cpp
-
+        UNO/src/action/robo/RoboAleatorio.cpp
         # Card
         UNO/src/card/Card.cpp
 

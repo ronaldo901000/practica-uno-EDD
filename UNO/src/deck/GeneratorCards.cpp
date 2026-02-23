@@ -1,27 +1,28 @@
 #include "../include/deck/GeneratorCards.h"
 #include "string"
 #include <iostream>
+#include "../include/action/robo/RoboAleatorio.h"
 
-GeneratorCards ::GeneratorCards(Configuration *config,int* playDirection, int* turnCout, bool* esLadoClaro, int numberPlayers)
+GeneratorCards ::GeneratorCards(Configuration *config, int *playDirection, int *turnCout, bool *esLadoClaro, int numberPlayers)
 {
     this->config = config;
     this->ultimaPosicionOcupada = 0;
     this->cantidadCartas = 0;
     this->generator = new GeneratorAction();
-    this->playDirection=playDirection;
-    this->turnCout=turnCout;
-    this->esLadoClaro=esLadoClaro;
-    this->numberPlayers=numberPlayers;
+    this->playDirection = playDirection;
+    this->turnCout = turnCout;
+    this->esLadoClaro = esLadoClaro;
+    this->numberPlayers = numberPlayers;
 }
 
 GeneratorCards::~GeneratorCards() {}
 
 // metodo que se encarga de la creacion de todas las cartas del mazo
-Card** GeneratorCards ::generateCards()
+Card **GeneratorCards ::generateCards()
 {
     calculateNumberCards();
     // se generan el lado claro de las cartas
-    Card** cards = new Card*[cantidadCartas];
+    Card **cards = new Card *[cantidadCartas];
     generateLightSideCard(cards);
 
     // si es flip se genera el lado oscuro
@@ -44,22 +45,21 @@ void GeneratorCards ::calculateNumberCards()
 }
 
 // metodo que se encarga de generar el lado claro de una carta
-void GeneratorCards::generateLightSideCard(Card** cards)
+void GeneratorCards::generateLightSideCard(Card **cards)
 {
     generateAllCardsWithColor(cards);
     createWildCards(true, cards);
-
 }
 
 // metod que genera todas las cartas numericas y cartas especiales que tiene un color especifico
-void GeneratorCards ::generateAllCardsWithColor( Card** cards)
+void GeneratorCards ::generateAllCardsWithColor(Card **cards)
 {
     for (int i = 0; i < CANTIDAD_COLORES_POR_LADO; i++)
     {
         if (i == AMARILLO)
         {
-            generateCardNumeric(ColorEnum::Amarillo,cards);
-            generateSpecialCards(ColorEnum::Amarillo, true,cards);
+            generateCardNumeric(ColorEnum::Amarillo, cards);
+            generateSpecialCards(ColorEnum::Amarillo, true, cards);
             if (config->isFlip())
             {
                 generateFlipCards(ColorEnum::Amarillo, cards);
@@ -68,17 +68,17 @@ void GeneratorCards ::generateAllCardsWithColor( Card** cards)
 
         else if (i == ROJO)
         {
-            generateCardNumeric(ColorEnum::Rojo,cards);
-            generateSpecialCards(ColorEnum::Rojo, true,cards);
+            generateCardNumeric(ColorEnum::Rojo, cards);
+            generateSpecialCards(ColorEnum::Rojo, true, cards);
             if (config->isFlip())
             {
-                generateFlipCards(ColorEnum::Rojo,cards);
+                generateFlipCards(ColorEnum::Rojo, cards);
             }
         }
         else if (i == AZUL)
         {
-            generateCardNumeric(ColorEnum::Azul,cards);
-            generateSpecialCards(ColorEnum::Azul, true,cards);
+            generateCardNumeric(ColorEnum::Azul, cards);
+            generateSpecialCards(ColorEnum::Azul, true, cards);
             if (config->isFlip())
             {
                 generateFlipCards(ColorEnum::Azul, cards);
@@ -86,7 +86,7 @@ void GeneratorCards ::generateAllCardsWithColor( Card** cards)
         }
         else if (i == VERDE)
         {
-            generateCardNumeric(ColorEnum::Verde,cards);
+            generateCardNumeric(ColorEnum::Verde, cards);
             generateSpecialCards(ColorEnum::Verde, true, cards);
             if (config->isFlip())
             {
@@ -102,7 +102,7 @@ Metodo que se encarga de construir las cartas numericas
     2. Se genera un lado
     3. Se construye la carta
     */
-void GeneratorCards::generateCardNumeric(ColorEnum color, Card** cards)
+void GeneratorCards::generateCardNumeric(ColorEnum color, Card **cards)
 {
     // Carta 0 (solo una)
     Numero *action = generator->generateNumeric(0);
@@ -124,7 +124,7 @@ void GeneratorCards::generateCardNumeric(ColorEnum color, Card** cards)
     }
 }
 
-void GeneratorCards ::generateSpecialCards(ColorEnum color, bool esClaro, Card** cards)
+void GeneratorCards ::generateSpecialCards(ColorEnum color, bool esClaro, Card **cards)
 {
     for (int i = 0; i < CANT_CARTAS_ESPECIALES; i++)
     {
@@ -164,11 +164,21 @@ void GeneratorCards ::generateSpecialCards(ColorEnum color, bool esClaro, Card**
                 }
                 (ultimaPosicionOcupada)++;
             }
+            else
+            {
+                RoboAleatorio *action = new RoboAleatorio();
+                action->setEsAcumulacion(false);
+                SideLight *side = new SideLight(action, color);
+                cards[ultimaPosicionOcupada] = new Card(side);
+                (ultimaPosicionOcupada)++;
+            }
+            
         }
     }
 }
 
-void GeneratorCards::createWildCards(bool isLight, Card** cards)
+
+void GeneratorCards::createWildCards(bool isLight, Card **cards)
 {
     for (int i = 0; i < 2; i++)
         for (int j = 0; j < 4; j++)
@@ -205,7 +215,7 @@ void GeneratorCards::createWildCards(bool isLight, Card** cards)
         }
 }
 
-void GeneratorCards ::generateFlipCards(ColorEnum color, Card** cards)
+void GeneratorCards ::generateFlipCards(ColorEnum color, Card **cards)
 {
     for (int i = 0; i < CANT_MISMA_CARTA_ESPECIAL_POR_COLOR; i++)
     {

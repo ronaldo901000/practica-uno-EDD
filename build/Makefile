@@ -321,6 +321,30 @@ UNO/src/action/robo/Robo.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/action/robo/Robo.cpp.s
 .PHONY : UNO/src/action/robo/Robo.cpp.s
 
+UNO/src/action/robo/RoboAleatorio.o: UNO/src/action/robo/RoboAleatorio.cpp.o
+.PHONY : UNO/src/action/robo/RoboAleatorio.o
+
+# target to build an object file
+UNO/src/action/robo/RoboAleatorio.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/action/robo/RoboAleatorio.cpp.o
+.PHONY : UNO/src/action/robo/RoboAleatorio.cpp.o
+
+UNO/src/action/robo/RoboAleatorio.i: UNO/src/action/robo/RoboAleatorio.cpp.i
+.PHONY : UNO/src/action/robo/RoboAleatorio.i
+
+# target to preprocess a source file
+UNO/src/action/robo/RoboAleatorio.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/action/robo/RoboAleatorio.cpp.i
+.PHONY : UNO/src/action/robo/RoboAleatorio.cpp.i
+
+UNO/src/action/robo/RoboAleatorio.s: UNO/src/action/robo/RoboAleatorio.cpp.s
+.PHONY : UNO/src/action/robo/RoboAleatorio.s
+
+# target to generate assembly for a file
+UNO/src/action/robo/RoboAleatorio.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/action/robo/RoboAleatorio.cpp.s
+.PHONY : UNO/src/action/robo/RoboAleatorio.cpp.s
+
 UNO/src/action/robo/RoboMasCuatro.o: UNO/src/action/robo/RoboMasCuatro.cpp.o
 .PHONY : UNO/src/action/robo/RoboMasCuatro.o
 
@@ -1098,6 +1122,9 @@ help:
 	@echo "... UNO/src/action/robo/Robo.o"
 	@echo "... UNO/src/action/robo/Robo.i"
 	@echo "... UNO/src/action/robo/Robo.s"
+	@echo "... UNO/src/action/robo/RoboAleatorio.o"
+	@echo "... UNO/src/action/robo/RoboAleatorio.i"
+	@echo "... UNO/src/action/robo/RoboAleatorio.s"
 	@echo "... UNO/src/action/robo/RoboMasCuatro.o"
 	@echo "... UNO/src/action/robo/RoboMasCuatro.i"
 	@echo "... UNO/src/action/robo/RoboMasCuatro.s"

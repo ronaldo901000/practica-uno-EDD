@@ -32,7 +32,7 @@ private:
     const int VIOLETA = 3;
     const int CANTIDAD_COLORES_POR_LADO = 4;
     const int CANT_MISMO_NUMERO_POR_COLOR = 2;
-    const int CANT_CARTAS_ESPECIALES = 3;
+    const int CANT_CARTAS_ESPECIALES = 4;
     const int CANT_MISMA_CARTA_ESPECIAL_POR_COLOR = 2;
     int numberPlayers;
     Numero *generateNumeric(int number);

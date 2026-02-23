@@ -30,15 +30,15 @@ private:
     bool* esLadoClaro;
     int numberPlayers;
 
-    const int CANTIDAD_FLIP = 116;
-    const int CANTIDAD_NORMAL = 108;
+    const int CANTIDAD_FLIP = 124;
+    const int CANTIDAD_NORMAL = 116;
     const int CANTIDAD_COLORES_POR_LADO = 4;
     const int AMARILLO = 0;
     const int ROJO = 1;
     const int AZUL = 2;
     const int VERDE = 3;
     const int CANT_MISMO_NUMERO_POR_COLOR = 2;
-    const int CANT_CARTAS_ESPECIALES = 3;
+    const int CANT_CARTAS_ESPECIALES = 4;
     const int CANT_MISMA_CARTA_ESPECIAL_POR_COLOR = 2;
 
     void calculateNumberCards();

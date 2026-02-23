@@ -1,19 +1,19 @@
 #include "../include/deck/GeneratorDarkSide.h"
-
+#include "../include/action/robo/RoboAleatorio.h"
 GeneratorDarkSide::GeneratorDarkSide(
-    Card **cards, 
-    int numberCards, 
-    int* playDirection, 
-    int* turnCount,
-    bool* isLightSide,
+    Card **cards,
+    int numberCards,
+    int *playDirection,
+    int *turnCount,
+    bool *isLightSide,
     int numberPlayers)
 {
     this->cards = cards;
     this->numberCards = numberCards;
-    this->playDirection=playDirection;
-    this->turnCount=turnCount;
-    this->isLightSide=isLightSide;
-    this->numberPlayers=numberPlayers;
+    this->playDirection = playDirection;
+    this->turnCount = turnCount;
+    this->isLightSide = isLightSide;
+    this->numberPlayers = numberPlayers;
 }
 
 GeneratorDarkSide::~GeneratorDarkSide()
@@ -118,6 +118,12 @@ void GeneratorDarkSide ::generateSpecialCards(ColorEnum color)
             else if (i == 2)
             {
                 RoboMasTresFlip *action = new RoboMasTresFlip();
+                SideDark *side = new SideDark(action, color);
+                cards[randomIndex]->setSideDark(side);
+            }
+            else
+            {
+                RoboAleatorio *action = new RoboAleatorio();
                 SideDark *side = new SideDark(action, color);
                 cards[randomIndex]->setSideDark(side);
             }

@@ -31,6 +31,7 @@ CircularList* CreatorPlayers ::createPlayers()
         // se inserta a la lista
         list->insertElement(player);
     }
+    cout << "|--------------------------------------------|"<<endl;
     return list;
 }
 

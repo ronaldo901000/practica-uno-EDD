@@ -29,7 +29,6 @@ private:
     int numberDraw;
     Configuration* config;
     void deleteCard(Card* card, LinkedList *acumulationList);
-    
 
 public:
     Player(std::string name, int id);

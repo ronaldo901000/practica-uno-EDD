@@ -4,7 +4,11 @@
 
 int main()
 {
-    Uno *uno = new Uno();
-    uno->start();
+    while (true)
+    {
+        Uno *uno = new Uno();
+        uno->start();
+        delete uno;
+    }
     return 0;
 }
