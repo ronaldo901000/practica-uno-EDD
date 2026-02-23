@@ -1,6 +1,7 @@
 #include "../include/player/PlayerView.h"
 #include "../include/player/Player.h"
 #include "../include/linked-list/LinkedList.h"
+#include "../include/circular-list/CircularList.h"
 #include "../include/card/Card.h"
 #include "../include/side/Side.h"
 #include "../include/action/Action.h"
@@ -92,7 +93,7 @@ void PlayerView::viewCards(bool isLightSide)
     cout << "\033[0m";
 }
 
-int PlayerView::actionsMenu(bool hasValidCards)
+int PlayerView::actionsMenu(bool hasValidCards, bool isUno)
 {
     int opcion;
 
@@ -103,18 +104,31 @@ int PlayerView::actionsMenu(bool hasValidCards)
             cout << "ACCIONES" << endl;
             cout << "1. Poner Carta" << endl;
             cout << "2. Robar carta" << endl;
+            if (isUno)
+            {
+                cout << "3. Reportar a alguien" << endl;
+            }
             cout << "Selecciona una opcion: ";
 
             if (!(cin >> opcion))
             {
-                // Si escriben algo diferente de numeros
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout << "Entrada invalida, Solo numeros.\n\n";
                 continue;
             }
 
-            if (opcion < 1 || opcion > 2)
+            int maxOpcion;
+            if (isUno)
+            {
+                maxOpcion = 3;
+            }
+            else
+            {
+                maxOpcion = 2;
+            }
+
+            if (opcion < 1 || opcion > maxOpcion)
             {
                 cout << "Opcion fuera de rango. Intenta de nuevo.\n\n";
                 continue;
@@ -125,12 +139,10 @@ int PlayerView::actionsMenu(bool hasValidCards)
     }
     else
     {
-
-        cout << "No tienes cartas Jugables, debes robar 1 carta";
+        cout << "No tienes cartas Jugables, debes robar 1 carta" << endl;
         cout << "Presiona enter para Robar" << endl;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin.get();
-        // se agrega automaticamete el numero 2 que significa el robo de una carta de la pila
         opcion = 2;
     }
     cout << endl;
@@ -319,6 +331,95 @@ void PlayerView::winner()
 void PlayerView::acumulationEnd(Player *nextPlayer, int currentAcumulation)
 {
     cout << "¡¡El Jugador: " << nextPlayer->getName() << " roba '" << currentAcumulation << "' cartas de la pila!!" << endl;
+    cout << "Presiona enter para Continuar" << endl;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
+    system("clear");
+}
+
+void PlayerView::declareUno(bool &saidUno)
+{
+    string entrada = "NO";
+    string uno = "UNO";
+    cout << "|----------------------------------------------|" << endl;
+    cout << "  Tienes 1 carta! Escribe 'UNO' para salvarte  " << endl;
+    cout << "|----------------------------------------------|" << endl;
+    cout << ">> :";
+    cin >> entrada;
+    if (entrada == uno)
+    {
+        saidUno = true;
+        return;
+    }
+    saidUno = false;
+}
+
+void PlayerView::reportUno(Player *player, CircularList *playersList, Stack *stack)
+{
+    cout << endl;
+    cout << "|----------------------------------------------|" << endl;
+    cout << "       Selecciona a quien quieres reportar      " << endl;
+    cout << "|----------------------------------------------|" << endl;
+
+    for (int i = 0; i < playersList->getSize(); i++)
+    {
+        Player *p = playersList->getElement(i);
+        if (p != player)
+        {
+            cout << (i + 1) << ". " << p->getName() << endl;
+        }
+    }
+
+    int opcion;
+    while (true)
+    {
+        cout << "Selecciona una opcion: ";
+        string entrada;
+        cin >> entrada;
+
+        bool esValido = true;
+        for (int i = 0; i < entrada.size(); i++)
+        {
+            if (!isdigit(entrada[i]))
+            {
+                esValido = false;
+                break;
+            }
+        }
+
+        if (!esValido || entrada.empty())
+        {
+            cout << "Entrada invalida, solo numeros.\n\n";
+            continue;
+        }
+
+        opcion = stoi(entrada);
+
+        if (opcion < 1 || opcion > playersList->getSize())
+        {
+            cout << "Opcion fuera de rango. Intenta de nuevo.\n\n";
+            continue;
+        }
+
+        break;
+    }
+
+    Player *reported = playersList->getElement(opcion - 1);
+
+    if (reported->getCardsList()->getSize() == 1 && !reported->getSaidUno())
+    {
+        cout << "|----------------------------------------------|" << endl;
+        cout << "  " << reported->getName() << " no grito UNO! Roba 2 cartas." << endl;
+        cout << "|----------------------------------------------|" << endl;
+        reported->drawCards(2, stack);
+    }
+    else
+    {
+        cout << "|----------------------------------------------|" << endl;
+        cout << "  Reporte invalido! " << player->getName() << " roba 2 cartas." << endl;
+        cout << "|----------------------------------------------|" << endl;
+        player->drawCards(2, stack);
+    }
     cout << "Presiona enter para Continuar" << endl;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();

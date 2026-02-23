@@ -897,6 +897,30 @@ UNO/src/player/CardSorter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.s
 .PHONY : UNO/src/player/CardSorter.cpp.s
 
+UNO/src/player/ControllerActions.o: UNO/src/player/ControllerActions.cpp.o
+.PHONY : UNO/src/player/ControllerActions.o
+
+# target to build an object file
+UNO/src/player/ControllerActions.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/player/ControllerActions.cpp.o
+.PHONY : UNO/src/player/ControllerActions.cpp.o
+
+UNO/src/player/ControllerActions.i: UNO/src/player/ControllerActions.cpp.i
+.PHONY : UNO/src/player/ControllerActions.i
+
+# target to preprocess a source file
+UNO/src/player/ControllerActions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/player/ControllerActions.cpp.i
+.PHONY : UNO/src/player/ControllerActions.cpp.i
+
+UNO/src/player/ControllerActions.s: UNO/src/player/ControllerActions.cpp.s
+.PHONY : UNO/src/player/ControllerActions.s
+
+# target to generate assembly for a file
+UNO/src/player/ControllerActions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UNO.dir/build.make CMakeFiles/UNO.dir/UNO/src/player/ControllerActions.cpp.s
+.PHONY : UNO/src/player/ControllerActions.cpp.s
+
 UNO/src/player/Player.o: UNO/src/player/Player.cpp.o
 .PHONY : UNO/src/player/Player.o
 
@@ -1194,6 +1218,9 @@ help:
 	@echo "... UNO/src/player/CardSorter.o"
 	@echo "... UNO/src/player/CardSorter.i"
 	@echo "... UNO/src/player/CardSorter.s"
+	@echo "... UNO/src/player/ControllerActions.o"
+	@echo "... UNO/src/player/ControllerActions.i"
+	@echo "... UNO/src/player/ControllerActions.s"
 	@echo "... UNO/src/player/Player.o"
 	@echo "... UNO/src/player/Player.i"
 	@echo "... UNO/src/player/Player.s"

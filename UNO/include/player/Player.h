@@ -13,6 +13,7 @@ class CardsManager;
 class Configuration;
 class CircularList;
 class CardSorter;
+class ControllerActions;
 
 class Player
 {
@@ -29,6 +30,8 @@ private:
     int numberDraw;
     Configuration* config;
     void deleteCard(Card* card, LinkedList *acumulationList);
+    bool saidUno;
+    ControllerActions* controllerActions;
 
 public:
     Player(std::string name, int id);
@@ -42,15 +45,15 @@ public:
     void drawCards(int counterCards, Stack *stack);
     void setConfig(Configuration* config);
     Configuration* getConfiguration();
-
+    PlayerView* getView();
     void playCard(bool isLightSide, Stack* stack, Stack* discards, bool isRobberyMode, CardsManager* manager0, CircularList *players, int *direction, int *turnCount);
     void addCard(Card *card);
     void sortCards(bool isLightSide);
     bool isWinner();
+    bool accumulate(int numberCards, bool isLightSide, Stack *stack, string nameAction, Stack *discards);
     void playValidCard(bool isLightSide, Stack *discards,Stack* stak,  CircularList* players, int* direction, int* turnCount);
-    bool accumulate(int numberCards, bool isLightSide, Stack *stack, string nameAction, Stack* discards);
-
     LinkedList* getCardsAcumulation(bool isLightSide, std::string nombre, int numberCardAcumulation);
     Player* defineNextPlayer(CircularList* players, int direction, int* turnCount);
+    bool getSaidUno();
 };
 #endif

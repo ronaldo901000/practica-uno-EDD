@@ -12,6 +12,7 @@
 #include <iostream>
 #include "../include/player/CardSorter.h"
 #include "../include/action/robo/RoboAleatorio.h"
+#include "ControllerActions.h"
 
 using namespace std;
 
@@ -23,14 +24,21 @@ Player::Player(std::string name, int id)
     this->view = new PlayerView(this);
     this->numberDraw = 0;
     this->sorter = new CardSorter();
+    this->controllerActions = new ControllerActions();
 }
 Player ::Player()
 {
     this->cardsList = new LinkedList();
     this->view = new PlayerView(this);
     this->numberDraw = 0;
+    this->controllerActions = new ControllerActions();
 }
-Player::~Player() {}
+Player::~Player()
+{
+    delete cardsList;
+    delete view;
+    delete controllerActions;
+}
 
 // metodo que sirve para que el jugador juegue sus cartas
 void Player ::playCard(bool isLightSide, Stack *stack, Stack *discards,
@@ -52,16 +60,20 @@ void Player ::playCard(bool isLightSide, Stack *stack, Stack *discards,
         manager->viewCurrentCard(discards->getTopElement(), isLightSide);
 
         view->viewCards(isLightSide);
-        int action = view->actionsMenu(hasValidCards);
+        int action = view->actionsMenu(hasValidCards, config->isScreamOne());
 
         if (action == PLAY_CARD)
         {
             playValidCard(isLightSide, discards, stack, players, direction, turnCount);
         }
-        else
+        else if(action ==DRAW_CARD)
         {
             Card *card = stack->pop();
             cardsList->insertElement(card);
+        }
+        //apartado para reportar a alguien que no aviso ¡UNO!
+        else{
+            view->reportUno(this, players, stack);
         }
     }
     else
@@ -73,7 +85,7 @@ void Player ::playCard(bool isLightSide, Stack *stack, Stack *discards,
             manager->viewCurrentCard(discards->getTopElement(), isLightSide);
 
             view->viewCards(isLightSide);
-            int action = view->actionsMenu(comparator->alertCards(cardsList, discards->getTopElement(), isLightSide));
+            int action = view->actionsMenu(comparator->alertCards(cardsList, discards->getTopElement(), isLightSide), config->isScreamOne());
             if (action == PLAY_CARD)
             {
                 playValidCard(isLightSide, discards, stack, players, direction, turnCount);
@@ -111,66 +123,15 @@ void Player::playValidCard(bool isLightSide, Stack *discards, Stack *stak, Circu
     cardsList->deleteElement(selectedCardIndex);
     discards->push(card);
 
-    Robo *robo;
-    string nameAction;
-    if (isLightSide)
+    // realiza las acciones segun el tipo de carta
+    controllerActions->handleCardEffect(isLightSide, card, manager, stak, view, discards, players, direction, turnCount, this);
+
+    // si esta activa la configuracion de gito UNO y ya solo le queda una carta al jugador
+    if (config->isScreamOne() && cardsList->getSize() == 1)
     {
-        robo = dynamic_cast<Robo *>(card->getSideLight()->getAction());
-    }
-    else
-    {
-        robo = dynamic_cast<Robo *>(card->getSideDark()->getAction());
+        view->declareUno(this->saidUno);
     }
 
-    // carta robo tiene una aplicacion de efecto diferente
-    if (robo != nullptr && dynamic_cast<RoboAleatorio*>(robo) == nullptr)
-    {
-
-        nameAction = robo->getNombre();
-
-        card->applyEffect(isLightSide);
-
-        int currentAcumulation = robo->getCantidadRobo();
-        bool canStack = true;
-        while (canStack)
-        {
-            Player *nextPlayer = defineNextPlayer(players, *direction, turnCount);
-            manager->viewCurrentCard(discards->getTopElement(), isLightSide);
-            canStack = nextPlayer->accumulate(currentAcumulation, isLightSide, stak, nameAction, discards);
-            if (canStack)
-            {
-                currentAcumulation += robo->getCantidadRobo();
-                Card *stackedCard = discards->getTopElement();
-
-                stackedCard->applyEffect(isLightSide);
-            }
-            else
-            {
-                view->acumulationEnd(nextPlayer, currentAcumulation);
-            }
-        }
-    }
-    // se aplica el efecto que tiene la carta directamente solo si no es carta robo
-    else
-    {
-
-        RoboAleatorio *roboAleatorio;
-        if (isLightSide)
-        {
-            roboAleatorio = dynamic_cast<RoboAleatorio *>(card->getSideLight()->getAction());
-        }
-        else
-        {
-            roboAleatorio = dynamic_cast<RoboAleatorio *>(card->getSideDark()->getAction());
-        }
-        if (roboAleatorio != nullptr)
-        {
-            roboAleatorio->setStack(stak);
-            roboAleatorio->setPlayers(players);
-        }
-
-        card->applyEffect(isLightSide);
-    }
     delete manager;
 }
 
@@ -234,6 +195,7 @@ void Player::drawCards(int counterCards, Stack *stack)
         Card *card = stack->pop();
         addCard(card);
     }
+    this->saidUno=false;
 }
 
 // metodo que se encarga de agregar una carta a la mano del jugador
@@ -366,4 +328,13 @@ void Player::deleteCard(Card *card, LinkedList *acumulationList)
             return;
         }
     }
+}
+
+PlayerView *Player ::getView()
+{
+    return this->view;
+}
+
+bool Player :: getSaidUno(){
+    return this->saidUno;
 }

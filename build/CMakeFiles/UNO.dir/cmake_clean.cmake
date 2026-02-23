@@ -63,6 +63,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/UNO.dir/UNO/src/partida/Partida.cpp.o.d"
   "CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o"
   "CMakeFiles/UNO.dir/UNO/src/player/CardSorter.cpp.o.d"
+  "CMakeFiles/UNO.dir/UNO/src/player/ControllerActions.cpp.o"
+  "CMakeFiles/UNO.dir/UNO/src/player/ControllerActions.cpp.o.d"
   "CMakeFiles/UNO.dir/UNO/src/player/Player.cpp.o"
   "CMakeFiles/UNO.dir/UNO/src/player/Player.cpp.o.d"
   "CMakeFiles/UNO.dir/UNO/src/player/PlayerView.cpp.o"

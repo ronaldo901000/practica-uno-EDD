@@ -3,6 +3,8 @@
 #include "string"
 class Player;
 class LinkedList;
+class CircularList;
+class Stack;
 
 
 class PlayerView
@@ -14,16 +16,17 @@ public:
     PlayerView(Player* player);
     ~PlayerView();
     void viewCards(bool isFlip);
-    int actionsMenu(bool hasValidCards);
+    int actionsMenu(bool hasValidCards, bool isUno);
     int selectCard();
     bool askContinueDraw();
     void alert();
     int accumulationMenu(bool isEmpty, int totalAcumulacion);
-    void viewCardsAcumulation(bool isLightSide, std::string nombre, Player* player);
     void printList(LinkedList* list, bool isLightSize);
     int selectCardAcumulation(LinkedList* listCardsAcumulation);
     void winner();
     void acumulationEnd(Player* nextPlayer, int currentAcumulation);
+    void declareUno(bool &saidUno);
+    void reportUno(Player *player, CircularList *playersList, Stack *stack);
 };
 
 #endif

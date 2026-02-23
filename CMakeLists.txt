@@ -78,6 +78,7 @@ add_executable(UNO
         UNO/src/player/Player.cpp
         UNO/src/player/PlayerView.cpp
         UNO/src/player/CardSorter.cpp
+        UNO/src/player/ControllerActions.cpp
         # Side
         UNO/src/side/Side.cpp
         UNO/src/side/SideDark.cpp
