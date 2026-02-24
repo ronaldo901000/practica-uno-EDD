@@ -21,8 +21,8 @@ void Uno::start()
     CircularList *list = creator->createPlayers();
 
     // se crean los mazos necesario para la partida
-    int *playDirection = new int[1];
-    int *turnCount = new int[1];
+    int *playDirection = new int[1]();
+    int *turnCount = new int[1]();
     bool *sidePlay = new bool(true);
     GeneratorStack *generator = new GeneratorStack(config, list->getSize(), playDirection, turnCount, sidePlay);
     Stack *stack = generator->generate();

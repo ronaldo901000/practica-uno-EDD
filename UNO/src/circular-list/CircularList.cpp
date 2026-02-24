@@ -80,5 +80,5 @@ void CircularList ::deleteElement(int index)
     previus->setNextNode(next);
     next->setPreviousNode(previus);
     // se destruye el nodo
-    node->~CircularNode();
+    delete node;
 }

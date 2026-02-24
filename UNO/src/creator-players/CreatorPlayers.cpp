@@ -1,6 +1,8 @@
 #include "../include/creator-players/CreatorPlayers.h"
 #include <iostream>
+#include "limits"
 using namespace std;
+
 
 CreatorPlayers ::CreatorPlayers(int numberPlayers)
 {
@@ -39,9 +41,18 @@ CircularList* CreatorPlayers ::createPlayers()
 void CreatorPlayers::getNamePlayer(Player *player, int i)
 {
     string name;
-
     cout << "Jugador " << (i + 1) << ", ingresa tu nombre: ";
-    cin >> name;
+    do
+    {
+        cout << "--> ";
+        cin >> name;
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Entrada invalida. Ingresa tu nombre: " << endl;
+        }
+    } while (cin.fail());
 
     player->setName(name);
     player->setId(i);
