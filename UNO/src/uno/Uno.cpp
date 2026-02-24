@@ -22,14 +22,14 @@ void Uno::start()
 
     // se crean los mazos necesario para la partida
     int *playDirection = new int[1];
-    int *turnCount = new int[0];
+    int *turnCount = new int[1];
     bool *sidePlay = new bool(true);
     GeneratorStack *generator = new GeneratorStack(config, list->getSize(), playDirection, turnCount, sidePlay);
     Stack *stack = generator->generate();
     int numberDecks = (config->getNumberPlayers() - 1) / 6 + 1;
-    system("clear");
+    clear();
     menu.mostarConfiguracion(list, config, numberDecks, stack->getTop());
-    system("clear");
+    clear();
 
     // inicia la partida
     Partida *partida = new Partida(list, stack, config, playDirection, turnCount, sidePlay);
@@ -55,27 +55,27 @@ Configuration *Uno::createConfig()
     cout << "Configuración de partida" << endl;
     cout << endl;
 
-    cout << "Acumulacion (Stacking) ?" << endl;
+    cout << "¿ Acumulacion (Stacking) ?" << endl;
     getResponse(&accumulation);
     cout << endl;
 
-    cout << "Reto del +4 ?" << endl;
+    cout << "¿ Reto del +4 ?" << endl;
     getResponse(&challenge);
     cout << endl;
 
-    cout << "Modo Robo ?" << endl;
+    cout << "¿ Modo Robo ?" << endl;
     getResponse(&robberyMode);
     cout << endl;
 
-    cout << "Grito de ¡UNO! ?" << endl;
+    cout << "¿ Grito de ¡UNO! ?" << endl;
     getResponse(&screamOne);
     cout << endl;
 
-    cout << "Ganar con Negra ?" << endl;
+    cout << "¿ Ganar con Negra ?" << endl;
     getResponse(&winBlack);
     cout << endl;
 
-    cout << "Jugar Con expansion de FLIP??" << endl;
+    cout << "¿ Jugar Con expansion de FLIP ?" << endl;
     getResponse(&flip);
     cout << endl;
 
@@ -90,7 +90,7 @@ Configuration *Uno::createConfig()
         winBlack,
         flip,
         numberPlayers);
-    system("clear");
+    clear();
     return config;
 }
 
@@ -137,4 +137,13 @@ void Uno::getNumerPlayers(int *numberPlayers)
             cout << "El Minimo permitido son 2 jugadores, vuelve a intentarlo: " << endl;
         }
     } while (*numberPlayers < MIN_PLAYERS);
+}
+
+void Uno::clear()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }

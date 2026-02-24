@@ -1,5 +1,5 @@
 #include "../include/partida/Partida.h"
-
+#include "limits"
 Partida::Partida(
     CircularList *playerList,
     Stack *stack,
@@ -25,7 +25,6 @@ Partida::Partida(
     {
         playerList->getElement(i)->setConfig(this->config);
     }
-    
 }
 
 void Partida::start()
@@ -49,13 +48,15 @@ void Partida::startRounds(CardsManager *manager)
     manager->drawInitialCard(this->stack, this->discards);
     while (!hasWinner)
     {
+        viewCardsNumber(stack->getTop());
         // el jugador en turno juega sus cartas
         Player *player = playerList->getElement(*turnCount);
-        player->playCard(*this->sidePlay, stack, discards, config->isRObberyMode(), manager, playerList,direction,turnCount);
-
+        player->playCard(*this->sidePlay, stack, discards, config->isRObberyMode(), manager, playerList, direction, turnCount);
+        turnEnd(this->messageTurnEnd);
         if (player->isWinner())
         {
             hasWinner = true;
+            turnEnd(this->messagefinish);
         }
         if (*direction == RIGHT)
         {
@@ -89,4 +90,29 @@ void Partida::setDireccion(int *direccion)
 bool Partida::getSidePlay()
 {
     return this->sidePlay;
+}
+
+void Partida::turnEnd(string message)
+{
+    cout <<  message<< endl;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
+
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+void Partida ::viewCardsNumber(int numberCards)
+{
+    cout << "\033[33m";
+    cout << "--------------------------------------------" << endl;
+    cout << endl;
+    cout << "-----Cartas disponibles en pila: " << numberCards << "-----" << endl;
+    cout << endl;
+    cout << "--------------------------------------------" << endl;
+    cout << "\033[0m";
+    cout << endl;
 }

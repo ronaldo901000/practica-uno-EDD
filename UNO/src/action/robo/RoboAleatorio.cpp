@@ -37,11 +37,6 @@ void RoboAleatorio::realizarAccion()
     }
     cout << endl;
     cout << "\033[93m" << "Gira la ruleta, '" << player->getName() << "' roba " << cantidadRobo << " cartas." << "\033[0m" << endl;
-    cout << "       Presiona ENTER para continuar jugando...";
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    string temp;
-    getline(cin, temp);
-    system("clear");
 }
 
 void RoboAleatorio ::setStack(Stack *stack)

@@ -22,7 +22,8 @@ private:
 
     const int DARK_SIDE = 0;
     const int LIGHT_SIDE = 1;
-
+    const string messageTurnEnd = "Presiona enter para Terminar Turno";
+    const string messagefinish = "Presiona enter para Salir";
     const int RIGHT = 0;
     const int LEFT = 1;
 
@@ -46,7 +47,8 @@ public:
     void setDireccion(int *direccion);
 
     bool getSidePlay();
-
+    void turnEnd(string message);
+    void viewCardsNumber(int numberCards);
 };
 
 #endif

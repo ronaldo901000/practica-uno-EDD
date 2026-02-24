@@ -28,7 +28,6 @@ void CardsManager::dealCards(Stack *stack, CircularList *players)
             player->addCard(card);
         }
     }
-    std::cout << "Reparticion completada" << std::endl;
 }
 
 void CardsManager ::drawInitialCard(Stack *stack, Stack *discards)

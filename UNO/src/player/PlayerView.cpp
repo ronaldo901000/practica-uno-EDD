@@ -139,10 +139,7 @@ int PlayerView::actionsMenu(bool hasValidCards, bool isUno)
     }
     else
     {
-        cout << "No tienes cartas Jugables, debes robar 1 carta" << endl;
-        cout << "Presiona enter para Robar" << endl;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin.get();
+        cout << "No tienes cartas Jugables, robas una carta" << endl;
         opcion = 2;
     }
     cout << endl;
@@ -222,11 +219,7 @@ int PlayerView::accumulationMenu(bool isEmpty, int totalAcumulacion)
     if (isEmpty)
     {
 
-        cout << "No tienes cartas para responder, debes robar " << totalAcumulacion << " cartas.";
-        cout << "Presiona enter para Robar" << endl;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin.get();
-        // se agrega automaticamete el numero 2 que significa el robo de una carta de la pila
+        cout << "No tienes cartas para seguir acumulando, robas " << totalAcumulacion << " cartas.";
         opcion = 2;
     }
     while (true)
@@ -325,16 +318,11 @@ int PlayerView::selectCardAcumulation(LinkedList *listCardsAcumulation)
 
 void PlayerView::winner()
 {
-
     cout << "¡¡¡¡¡Felicidades " << player->getName() << "Has ganado esta partida!!!!!!" << endl;
 }
 void PlayerView::acumulationEnd(Player *nextPlayer, int currentAcumulation)
 {
     cout << "¡¡El Jugador: " << nextPlayer->getName() << " roba '" << currentAcumulation << "' cartas de la pila!!" << endl;
-    cout << "Presiona enter para Continuar" << endl;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin.get();
-    system("clear");
 }
 
 void PlayerView::declareUno(bool &saidUno)
@@ -420,8 +408,4 @@ void PlayerView::reportUno(Player *player, CircularList *playersList, Stack *sta
         cout << "|----------------------------------------------|" << endl;
         player->drawCards(2, stack);
     }
-    cout << "Presiona enter para Continuar" << endl;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin.get();
-    system("clear");
 }

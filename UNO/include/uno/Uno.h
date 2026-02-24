@@ -19,5 +19,6 @@ private:
 public:
     ~Uno();
     void start();
+    void clear();
 };
 #endif
